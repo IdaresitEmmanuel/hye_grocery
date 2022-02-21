@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1002387484928",
+    "project_id": "hye-grocery-app",
+    "storage_bucket": "hye-grocery-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002387484928:android:1fabba310fc296fac083e5",
+        "android_client_info": {
+          "package_name": "com.example.hye_grocery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002387484928-1tqjkduq4qampho8un4hargo4ifqn6d5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hye_grocery",
+            "certificate_hash": "59bbea61beac0eaff5963d35e6a57ec608b1e28d"
+          }
+        },
+        {
+          "client_id": "1002387484928-20i0mcb9nf62mchhro3ihkit3g5khcdc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0Qi-vNZKepD2Z2xxRAQtTH53b82tVjGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002387484928-20i0mcb9nf62mchhro3ihkit3g5khcdc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
