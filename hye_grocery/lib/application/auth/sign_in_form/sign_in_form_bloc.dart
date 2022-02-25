@@ -34,6 +34,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         return state.copyWith();
       }, goToSignUpPagePressed: (e) {
         return state.copyWith();
+      }, registerWithEmailAndPasswordPressed: (e) {
+        return state.copyWith();
       }));
     });
   }
