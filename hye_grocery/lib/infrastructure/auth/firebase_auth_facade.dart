@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hye_grocery/domain/auth/auth_failure.dart';
 import 'package:hye_grocery/domain/auth/i_auth_facade.dart';
+import 'package:hye_grocery/domain/auth/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
+import 'package:hye_grocery/domain/core/value_objects.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAuthFacade)
@@ -13,6 +15,16 @@ class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
 
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+
+  @override
+  Future<Option<MyUser>> getSignedInUser() async {
+    return some(
+        MyUser(id: UniqueId.fromUniqueString(_firebaseAuth.currentUser!.uid)));
+  }
+
+  @override
+  Future<void> signOut() =>
+      Future.wait([_firebaseAuth.signOut(), _googleSignIn.signOut()]);
 
   @override
   Future<Either<AuthFailure, Unit>> signInUser(
@@ -25,7 +37,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found" || e.code == "wrong-password") {
-        return left(const AuthFailure.emailAlreadyInUser());
+        return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());
       }

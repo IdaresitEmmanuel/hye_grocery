@@ -29,18 +29,18 @@ class _SignInState extends State<SignIn> {
             Center(
               child: Image.asset(
                 "assets/images/logo.png",
-                width: 200.0,
+                width: 120.0,
                 fit: BoxFit.contain,
               ),
             ),
-            const SizedBox(height: 40.0),
+            const SizedBox(height: 30.0),
             Text("Welcome back",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .primaryTextTheme
                     .bodyLarge!
                     .copyWith(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 5.0),
             Text("Log in to your existing account",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)

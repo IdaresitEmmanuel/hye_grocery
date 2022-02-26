@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hye_grocery/presentation/onboarding/getting_started.dart';
 import 'package:hye_grocery/presentation/onboarding/sign_in.dart';
-import 'package:hye_grocery/presentation/onboarding/widgets/sign_up.dart';
+import 'package:hye_grocery/presentation/onboarding/sign_up.dart';
 import 'package:hye_grocery/presentation/route/routes.dart';
 
 class RouteGenerator {

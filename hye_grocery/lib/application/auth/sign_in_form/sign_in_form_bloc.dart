@@ -17,26 +17,42 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   SignInFormBloc(this.iAuthFacade) : super(SignInFormState.initial()) {
     on<SignInFormEvent>((event, emit) {
-      emit(state.copyWith());
-      emit(event.map(emailChanged: (e) {
-        return state.copyWith(
-            emailAddress: EmailAddress(e.value), authFailureOrSuccess: none());
-      }, passwordChanged: (e) {
-        return state.copyWith(
-            password: Password(e.value), authFailureOrSuccess: none());
-      }, signInWithEmailAndPasswordPressed: (e) {
-        return state.copyWith();
-      }, signInWithGooglePressed: (e) {
-        return state.copyWith();
-      }, signInWithFacebookPressed: (e) {
-        return state.copyWith();
-      }, forgotPasswordPressed: (e) {
-        return state.copyWith();
-      }, goToSignUpPagePressed: (e) {
-        return state.copyWith();
-      }, registerWithEmailAndPasswordPressed: (e) {
-        return state.copyWith();
-      }));
+      event.map(
+          emailChanged: (event) {
+            emit(state.copyWith(
+                emailAddress: EmailAddress(event.value),
+                authFailureOrSuccess: none()));
+          },
+          passwordChanged: (event) {
+            emit(state.copyWith(
+                password: Password(event.value), authFailureOrSuccess: none()));
+          },
+          signInWithEmailAndPasswordPressed: (event) async {
+            final result = await iAuthFacade.signInUser(
+                emailAddress: state.emailAddress, password: state.password);
+            result.fold(
+              (l) => emit(state.copyWith(authFailureOrSuccess: some(left(l)))),
+              (r) => emit(state.copyWith(authFailureOrSuccess: none())),
+            );
+          },
+          registerWithEmailAndPasswordPressed: (event) async {
+            final result = await iAuthFacade.signUpUser(
+                emailAddress: state.emailAddress, password: state.password);
+            result.fold(
+              (l) => emit(state.copyWith(authFailureOrSuccess: some(left(l)))),
+              (r) => emit(state.copyWith(authFailureOrSuccess: none())),
+            );
+          },
+          signInWithGooglePressed: (event) async {
+            final result = await iAuthFacade.signInWithGoogle();
+            result.fold(
+              (l) => emit(state.copyWith(authFailureOrSuccess: some(left(l)))),
+              (r) => emit(state.copyWith(authFailureOrSuccess: none())),
+            );
+          },
+          signInWithFacebookPressed: (event) async {},
+          forgotPasswordPressed: (event) async {},
+          goToSignUpPagePressed: (event) async {});
     });
   }
 }
