@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import "package:flutter/material.dart";
 import 'package:hye_grocery/presentation/onboarding/widgets/carousel_marker.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/rect_button.dart';
-import 'package:hye_grocery/presentation/route/routes.dart';
+import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class GettingStarted extends StatefulWidget {
   const GettingStarted({Key? key}) : super(key: key);
@@ -66,8 +67,8 @@ class GettingStartedState extends State<GettingStarted> {
                                   RectButton(
                                       text: "Get Started",
                                       onTap: () {
-                                        Navigator.pushNamed(
-                                            context, Routes.signIn);
+                                        AutoRouter.of(context)
+                                            .push(const SignIn());
                                       }),
                                   const SizedBox(height: 60.0),
                                 ],

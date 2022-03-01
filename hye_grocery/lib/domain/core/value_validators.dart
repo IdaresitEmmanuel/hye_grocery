@@ -19,3 +19,11 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return left(ValueFailure.shortPassword(failedValue: input));
   }
 }
+
+Either<ValueFailure<String>, String> validatePhoneNumber(String input) {
+  if (input.length >= 10) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidPhoneNumber(failedValue: input));
+  }
+}

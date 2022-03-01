@@ -1,11 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:hye_grocery/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/hform_field.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/round_button.dart';
-import 'package:hye_grocery/presentation/route/routes.dart';
+import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -95,7 +96,8 @@ class _SignUpState extends State<SignUp> {
                 GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, Routes.signIn);
+                      // Navigator.pushReplacementNamed(context, Routes.signIn);
+                      AutoRouter.of(context).replace(const SignIn());
                     },
                     child: Text("Sign In",
                         style: TextStyle(color: HColors.primaryColor)))
@@ -113,42 +115,88 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        child: Column(
-      // crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        const HFormField(
-          hintText: "Username",
-          icon: Icons.person_rounded,
-        ),
-        const HFormField(
-          hintText: "Email",
-          icon: Icons.email_rounded,
-        ),
-        const HFormField(
-          hintText: "Phone",
-          icon: Icons.phone_android_rounded,
-        ),
-        const HFormField(
-          hintText: "Password",
-          icon: Icons.lock_rounded,
-          obscureText: true,
-        ),
-        const HFormField(
-          hintText: "Confirm password",
-          icon: Icons.lock_rounded,
-          obscureText: true,
-        ),
-        Container(
-            margin: const EdgeInsets.symmetric(vertical: 20.0),
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: RoundButton(
-                text: "Sign Up",
-                onTap: () {
-                  context.read<SignInFormBloc>().add(const SignInFormEvent
-                      .registerWithEmailAndPasswordPressed());
-                })),
-      ],
-    ));
+    return BlocBuilder<SignUpFormBloc, SignUpFormState>(
+      builder: (context, state) {
+        return Form(
+            child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            HFormField(
+                hintText: "Username",
+                icon: Icons.person_rounded,
+                onChanged: (value) {}),
+            HFormField(
+              hintText: "Email",
+              icon: Icons.email_rounded,
+              onChanged: (value) {
+                context
+                    .read<SignUpFormBloc>()
+                    .add(SignUpFormEvent.emailChanged(value));
+              },
+              validator: (_) =>
+                  context.read<SignUpFormBloc>().state.emailAddress.value.fold(
+                        (f) => f.maybeMap(
+                            invalidEmail: (_) => 'Invalid Email',
+                            orElse: () => null),
+                        (_) => null,
+                      ),
+            ),
+            HFormField(
+              hintText: "Phone",
+              icon: Icons.phone_android_rounded,
+              onChanged: (value) {
+                context
+                    .read<SignUpFormBloc>()
+                    .add(SignUpFormEvent.phoneNumberChanged(value));
+              },
+            ),
+            HFormField(
+              hintText: "Password",
+              icon: Icons.lock_rounded,
+              obscureText: true,
+              onChanged: (value) => context
+                  .read<SignUpFormBloc>()
+                  .add(SignUpFormEvent.passwordChanged(value)),
+              validator: (_) =>
+                  context.read<SignUpFormBloc>().state.password.value.fold(
+                        (f) => f.maybeMap(
+                            shortPassword: (_) => 'Short Password',
+                            orElse: () => null),
+                        (_) => null,
+                      ),
+            ),
+            HFormField(
+              hintText: "Confirm password",
+              icon: Icons.lock_rounded,
+              obscureText: true,
+              onChanged: (value) => context
+                  .read<SignUpFormBloc>()
+                  .add(SignUpFormEvent.confirmPasswordChanged(value)),
+              validator: (_) => context
+                  .read<SignUpFormBloc>()
+                  .state
+                  .confirmPassword
+                  .value
+                  .fold(
+                    (f) => f.maybeMap(
+                        shortPassword: (_) => 'Short Password',
+                        orElse: () => null),
+                    (_) => null,
+                  ),
+            ),
+            Container(
+                margin: const EdgeInsets.symmetric(vertical: 20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: RoundButton(
+                    text: "Sign Up",
+                    onTap: () {
+                      context
+                          .read<SignUpFormBloc>()
+                          .add(const SignUpFormEvent.registerUserPressed());
+                    })),
+          ],
+        ));
+      },
+    );
   }
 }

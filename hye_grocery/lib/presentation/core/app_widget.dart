@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:hye_grocery/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:hye_grocery/injection.dart';
 import 'package:hye_grocery/presentation/core/theme/theme.dart';
-import 'package:hye_grocery/presentation/route/route_generator.dart';
-import 'package:hye_grocery/presentation/route/routes.dart';
+import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  AppWidget({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,15 @@ class AppWidget extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => getIt<SignInFormBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<SignUpFormBloc>(),
           )
         ],
-        child: MaterialApp(
+        child: MaterialApp.router(
+          routerDelegate: _appRouter.delegate(),
+          routeInformationParser: _appRouter.defaultRouteParser(),
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.gettingStarted,
-          onGenerateRoute: RouteGenerator.generateRoute,
           title: 'Hye Grocery app',
           theme: HThemeData.lightTheme,
         ));

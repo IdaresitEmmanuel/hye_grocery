@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -5,7 +6,7 @@ import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/hform_field.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/round_button.dart';
-import 'package:hye_grocery/presentation/route/routes.dart';
+import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -105,7 +106,7 @@ class _SignInState extends State<SignIn> {
                 const Text("Don't have an account?"),
                 GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, Routes.signUp);
+                      AutoRouter.of(context).replace(const SignUp());
                     },
                     child: Text("Sign up",
                         style: TextStyle(color: HColors.primaryColor)))
@@ -123,7 +124,15 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInFormBloc, SignInFormState>(
+    return BlocConsumer<SignInFormBloc, SignInFormState>(
+      listener: (context, state) {
+        state.authFailureOrSuccess.fold(
+            () => null,
+            (either) => either.fold((failure) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("sign in unsuccessful!")));
+                }, (r) => null));
+      },
       builder: (context, state) {
         return Form(
             autovalidateMode:

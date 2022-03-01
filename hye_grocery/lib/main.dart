@@ -14,5 +14,5 @@ Future<void> main() async {
     final license = await rootBundle.loadString('assets/fonts/nunito/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
-  runApp(const AppWidget());
+  runApp(AppWidget());
 }

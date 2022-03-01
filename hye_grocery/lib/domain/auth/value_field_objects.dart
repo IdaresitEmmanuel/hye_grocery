@@ -24,3 +24,14 @@ class Password extends ValueObject<String> {
 
   const Password._({required this.value});
 }
+
+class PhoneNumber extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PhoneNumber(String input) {
+    return PhoneNumber._(value: validatePhoneNumber(input));
+  }
+
+  const PhoneNumber._({required this.value});
+}
