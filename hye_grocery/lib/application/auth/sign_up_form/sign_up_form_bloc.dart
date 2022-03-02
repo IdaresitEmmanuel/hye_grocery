@@ -18,7 +18,12 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
 
   @override
   Stream<SignUpFormState> mapEventToState(SignUpFormEvent event) async* {
-    yield* event.map(emailChanged: (event) async* {
+    yield* event.map(refreshState: (event) async* {
+      yield SignUpFormState.initial();
+    }, userNameChanged: (event) async* {
+      yield state.copyWith(
+          userName: UserName(event.value), authFailureOrSuccess: none());
+    }, emailChanged: (event) async* {
       yield state.copyWith(
           emailAddress: EmailAddress(event.value),
           authFailureOrSuccess: none());
@@ -27,24 +32,23 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
           password: Password(event.value), authFailureOrSuccess: none());
     }, confirmPasswordChanged: (event) async* {
       yield state.copyWith(
-          confirmPassword: Password(event.value), authFailureOrSuccess: none());
+          confirmPassword:
+              Password2(state.password.value.getOrElse(() => ""), event.value),
+          authFailureOrSuccess: none());
     }, phoneNumberChanged: (event) async* {
       yield state.copyWith(
           phoneNumber: PhoneNumber(event.value), authFailureOrSuccess: none());
     }, registerUserPressed: (event) async* {
-      print("register user got pressed");
-      // if (!state.passwordMismatch) {
+      yield state.copyWith(showErrorMessages: true);
       final result = await iAuthFacade.signUpUser(
-          displayName: state.displayName,
+          userName: state.userName,
           emailAddress: state.emailAddress,
+          phoneNumber: state.phoneNumber,
           password: state.password);
       yield result.fold(
         (l) => state.copyWith(authFailureOrSuccess: some(left(l))),
         (r) => state.copyWith(authFailureOrSuccess: none()),
       );
-      // }
-      // yield state.copyWith(passwordMismatch: true);
-      // yield state.copyWith(passwordMismatch: false);
     });
   }
 }

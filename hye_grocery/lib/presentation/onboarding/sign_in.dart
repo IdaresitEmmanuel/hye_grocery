@@ -17,102 +17,111 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   @override
+  void initState() {
+    super.initState();
+    context.read<SignInFormBloc>().add(const SignInFormEvent.refreshState());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: SafeFold(
-        body: ListView(
-          shrinkWrap: true,
-          reverse: true,
-          children: [
-            Center(
-              child: Image.asset(
-                "assets/images/logo.png",
-                width: 120.0,
-                fit: BoxFit.contain,
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            Text("Welcome back",
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodyLarge!
-                    .copyWith(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 5.0),
-            Text("Log in to your existing account",
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodyMedium!
-                    .copyWith(fontWeight: FontWeight.w400)),
-            const SizedBox(height: 30.0),
-            const SignInForm(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: const [
-                  Expanded(child: Divider()),
-                  SizedBox(width: 10.0),
-                  Text("Or sign in using"),
-                  SizedBox(width: 10.0),
-                  Expanded(child: Divider()),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      "assets/images/facebook_logo.png",
-                      width: 24.0,
-                      height: 24.0,
-                    ),
-                    label: const Text("Facebook"),
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF43609C),
-                    ),
-                  ),
-                  const SizedBox(width: 20.0),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      context
-                          .read<SignInFormBloc>()
-                          .add(const SignInFormEvent.signInWithGooglePressed());
-                    },
-                    icon: Image.asset(
-                      "assets/images/google_logo.png",
-                      width: 20.0,
-                    ),
-                    label: const Text("Google"),
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFFDD4B39),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            Row(
+        body: Center(
+          child: SingleChildScrollView(
+            reverse: true,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account?"),
-                GestureDetector(
-                    onTap: () {
-                      AutoRouter.of(context).replace(const SignUp());
-                    },
-                    child: Text("Sign up",
-                        style: TextStyle(color: HColors.primaryColor)))
+                Center(
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    width: 120.0,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 30.0),
+                Text("Welcome back",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyLarge!
+                        .copyWith(fontWeight: FontWeight.w600)),
+                const SizedBox(height: 5.0),
+                Text("Log in to your existing account",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyMedium!
+                        .copyWith(fontWeight: FontWeight.w400)),
+                const SizedBox(height: 30.0),
+                const SignInForm(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    children: const [
+                      Expanded(child: Divider()),
+                      SizedBox(width: 10.0),
+                      Text("Or sign in using"),
+                      SizedBox(width: 10.0),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {},
+                        icon: Image.asset(
+                          "assets/images/facebook_logo.png",
+                          width: 24.0,
+                          height: 24.0,
+                        ),
+                        label: const Text("Facebook"),
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF43609C),
+                        ),
+                      ),
+                      const SizedBox(width: 20.0),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          context.read<SignInFormBloc>().add(
+                              const SignInFormEvent.signInWithGooglePressed());
+                        },
+                        icon: Image.asset(
+                          "assets/images/google_logo.png",
+                          width: 20.0,
+                        ),
+                        label: const Text("Google"),
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFFDD4B39),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?"),
+                    GestureDetector(
+                        onTap: () {
+                          AutoRouter.of(context).replace(const SignUp());
+                        },
+                        child: Text("Sign up",
+                            style: TextStyle(color: HColors.primaryColor)))
+                  ],
+                )
               ],
-            )
-          ].reversed.toList(),
+            ),
+          ),
         ),
       ),
     );
@@ -135,14 +144,10 @@ class SignInForm extends StatelessWidget {
       },
       builder: (context, state) {
         return Form(
-            autovalidateMode:
-                //  state.showErrorMessages
-                //     ?
-                AutovalidateMode.always
-            // : AutovalidateMode.disabled
-            ,
+            autovalidateMode: state.showErrorMessages
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 HFormField(
                   hintText: "Email",

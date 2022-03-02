@@ -5,13 +5,13 @@ import 'package:hye_grocery/domain/core/value_objects.dart';
 
 class MyUser {
   UniqueId id;
-  String displayName;
+  UserName userName;
   EmailAddress emailAddress;
-  String? phoneNo;
+  PhoneNumber? phoneNo;
   String? photoUrl;
   MyUser({
     required this.id,
-    required this.displayName,
+    required this.userName,
     required this.emailAddress,
     this.phoneNo,
     this.photoUrl,
@@ -19,14 +19,14 @@ class MyUser {
 
   MyUser copyWith({
     UniqueId? id,
-    String? displayName,
+    UserName? userName,
     EmailAddress? emailAddress,
-    String? phoneNo,
+    PhoneNumber? phoneNo,
     String? photoUrl,
   }) {
     return MyUser(
       id: id ?? this.id,
-      displayName: displayName ?? this.displayName,
+      userName: userName ?? this.userName,
       emailAddress: emailAddress ?? this.emailAddress,
       phoneNo: phoneNo ?? this.phoneNo,
       photoUrl: photoUrl ?? this.photoUrl,
@@ -35,10 +35,10 @@ class MyUser {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': UniqueId.fromUniqueString(id as String),
-      'displayName': displayName,
-      'emailAddress': EmailAddress(emailAddress as String),
-      'phoneNo': phoneNo,
+      'id': id.value.getOrElse(() => ""),
+      'userName': userName.getOrCrash(),
+      'emailAddress': emailAddress.getOrCrash(),
+      'phoneNo': phoneNo!.value.getOrElse(() => ""),
       'photoUrl': photoUrl,
     };
   }
@@ -46,7 +46,7 @@ class MyUser {
   factory MyUser.fromMap(Map<String, dynamic> map) {
     return MyUser(
       id: UniqueId.fromUniqueString(map['id']),
-      displayName: map['displayName'] ?? '',
+      userName: map['displayName'] ?? '',
       emailAddress: EmailAddress(map['emailAddress']),
       phoneNo: map['phoneNo'],
       photoUrl: map['photoUrl'],
@@ -59,7 +59,7 @@ class MyUser {
 
   @override
   String toString() {
-    return 'MyUser(id: $id, displayName: $displayName, emailAddress: $emailAddress, phoneNo: $phoneNo, photoUrl: $photoUrl)';
+    return 'MyUser(id: $id, displayName: $userName, emailAddress: $emailAddress, phoneNo: $phoneNo, photoUrl: $photoUrl)';
   }
 
   @override
@@ -68,7 +68,7 @@ class MyUser {
 
     return other is MyUser &&
         other.id == id &&
-        other.displayName == displayName &&
+        other.userName == userName &&
         other.emailAddress == emailAddress &&
         other.phoneNo == phoneNo &&
         other.photoUrl == photoUrl;
@@ -77,7 +77,7 @@ class MyUser {
   @override
   int get hashCode {
     return id.hashCode ^
-        displayName.hashCode ^
+        userName.hashCode ^
         emailAddress.hashCode ^
         phoneNo.hashCode ^
         photoUrl.hashCode;

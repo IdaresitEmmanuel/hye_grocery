@@ -14,6 +14,17 @@ class EmailAddress extends ValueObject<String> {
   const EmailAddress._({required this.value});
 }
 
+class UserName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory UserName(String input) {
+    return UserName._(value: validateUserName(input));
+  }
+
+  const UserName._({required this.value});
+}
+
 class Password extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
@@ -23,6 +34,17 @@ class Password extends ValueObject<String> {
   }
 
   const Password._({required this.value});
+}
+
+class Password2 extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Password2(String p1, String p2) {
+    return Password2._(value: validatePassword2(p1, p2));
+  }
+
+  const Password2._({required this.value});
 }
 
 class PhoneNumber extends ValueObject<String> {

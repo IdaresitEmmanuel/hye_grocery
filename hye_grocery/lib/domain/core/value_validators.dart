@@ -2,6 +2,14 @@ import 'package:dartz/dartz.dart';
 
 import 'failures.dart';
 
+Either<ValueFailure<String>, String> validateUserName(String input) {
+  if (input.trim().isNotEmpty) {
+    return right(input);
+  } else {
+    return left(ValueFailure.emptyUserName(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const regExp =
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
@@ -17,6 +25,14 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return right(input);
   } else {
     return left(ValueFailure.shortPassword(failedValue: input));
+  }
+}
+
+Either<ValueFailure<String>, String> validatePassword2(String p1, String p2) {
+  if (p1 == p2) {
+    return right(p2);
+  } else {
+    return left(ValueFailure.passwordMisMatch(failedValue: p2));
   }
 }
 

@@ -18,6 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
+  EmptyUserName<T> emptyUserName<T>({required String failedValue}) {
+    return EmptyUserName<T>(
+      failedValue: failedValue,
+    );
+  }
+
   InvalidEmail<T> invalidEmail<T>({required String failedValue}) {
     return InvalidEmail<T>(
       failedValue: failedValue,
@@ -26,6 +32,12 @@ class _$ValueFailureTearOff {
 
   ShortPassword<T> shortPassword<T>({required String failedValue}) {
     return ShortPassword<T>(
+      failedValue: failedValue,
+    );
+  }
+
+  PasswordMisMatch<T> passwordMisMatch<T>({required String failedValue}) {
+    return PasswordMisMatch<T>(
       failedValue: failedValue,
     );
   }
@@ -46,44 +58,56 @@ mixin _$ValueFailure<T> {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
     required TResult Function(String failedValue) invalidEmail,
     required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     required TResult orElse(),
   }) =>
@@ -122,6 +146,164 @@ class _$ValueFailureCopyWithImpl<T, $Res>
               as String,
     ));
   }
+}
+
+/// @nodoc
+abstract class $EmptyUserNameCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $EmptyUserNameCopyWith(
+          EmptyUserName<T> value, $Res Function(EmptyUserName<T>) then) =
+      _$EmptyUserNameCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue});
+}
+
+/// @nodoc
+class _$EmptyUserNameCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyUserNameCopyWith<T, $Res> {
+  _$EmptyUserNameCopyWithImpl(
+      EmptyUserName<T> _value, $Res Function(EmptyUserName<T>) _then)
+      : super(_value, (v) => _then(v as EmptyUserName<T>));
+
+  @override
+  EmptyUserName<T> get _value => super._value as EmptyUserName<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(EmptyUserName<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmptyUserName<T> implements EmptyUserName<T> {
+  const _$EmptyUserName({required this.failedValue});
+
+  @override
+  final String failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.emptyUserName(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EmptyUserName<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $EmptyUserNameCopyWith<T, EmptyUserName<T>> get copyWith =>
+      _$EmptyUserNameCopyWithImpl<T, EmptyUserName<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+  }) {
+    return emptyUserName(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+  }) {
+    return emptyUserName?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    required TResult orElse(),
+  }) {
+    if (emptyUserName != null) {
+      return emptyUserName(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+  }) {
+    return emptyUserName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+  }) {
+    return emptyUserName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    required TResult orElse(),
+  }) {
+    if (emptyUserName != null) {
+      return emptyUserName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyUserName<T> implements ValueFailure<T> {
+  const factory EmptyUserName({required String failedValue}) =
+      _$EmptyUserName<T>;
+
+  @override
+  String get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $EmptyUserNameCopyWith<T, EmptyUserName<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -192,8 +374,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
     required TResult Function(String failedValue) invalidEmail,
     required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
   }) {
     return invalidEmail(failedValue);
@@ -202,8 +386,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
   }) {
     return invalidEmail?.call(failedValue);
@@ -212,8 +398,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
@@ -226,8 +414,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
   }) {
     return invalidEmail(this);
@@ -236,8 +426,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
   }) {
     return invalidEmail?.call(this);
@@ -246,8 +438,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
@@ -337,8 +531,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
     required TResult Function(String failedValue) invalidEmail,
     required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
   }) {
     return shortPassword(failedValue);
@@ -347,8 +543,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
   }) {
     return shortPassword?.call(failedValue);
@@ -357,8 +555,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
@@ -371,8 +571,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
   }) {
     return shortPassword(this);
@@ -381,8 +583,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
   }) {
     return shortPassword?.call(this);
@@ -391,8 +595,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
@@ -412,6 +618,164 @@ abstract class ShortPassword<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PasswordMisMatchCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $PasswordMisMatchCopyWith(
+          PasswordMisMatch<T> value, $Res Function(PasswordMisMatch<T>) then) =
+      _$PasswordMisMatchCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue});
+}
+
+/// @nodoc
+class _$PasswordMisMatchCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $PasswordMisMatchCopyWith<T, $Res> {
+  _$PasswordMisMatchCopyWithImpl(
+      PasswordMisMatch<T> _value, $Res Function(PasswordMisMatch<T>) _then)
+      : super(_value, (v) => _then(v as PasswordMisMatch<T>));
+
+  @override
+  PasswordMisMatch<T> get _value => super._value as PasswordMisMatch<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(PasswordMisMatch<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
+  const _$PasswordMisMatch({required this.failedValue});
+
+  @override
+  final String failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.passwordMisMatch(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PasswordMisMatch<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $PasswordMisMatchCopyWith<T, PasswordMisMatch<T>> get copyWith =>
+      _$PasswordMisMatchCopyWithImpl<T, PasswordMisMatch<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+  }) {
+    return passwordMisMatch(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+  }) {
+    return passwordMisMatch?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    required TResult orElse(),
+  }) {
+    if (passwordMisMatch != null) {
+      return passwordMisMatch(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+  }) {
+    return passwordMisMatch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+  }) {
+    return passwordMisMatch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    required TResult orElse(),
+  }) {
+    if (passwordMisMatch != null) {
+      return passwordMisMatch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PasswordMisMatch<T> implements ValueFailure<T> {
+  const factory PasswordMisMatch({required String failedValue}) =
+      _$PasswordMisMatch<T>;
+
+  @override
+  String get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $PasswordMisMatchCopyWith<T, PasswordMisMatch<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -484,8 +848,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
     required TResult Function(String failedValue) invalidEmail,
     required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
   }) {
     return invalidPhoneNumber(failedValue);
@@ -494,8 +860,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
   }) {
     return invalidPhoneNumber?.call(failedValue);
@@ -504,8 +872,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
     TResult Function(String failedValue)? invalidEmail,
     TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
@@ -518,8 +888,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
   }) {
     return invalidPhoneNumber(this);
@@ -528,8 +900,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
   }) {
     return invalidPhoneNumber?.call(this);
@@ -538,8 +912,10 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     required TResult orElse(),
   }) {
