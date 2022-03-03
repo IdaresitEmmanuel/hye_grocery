@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_up_form/sign_up_form_bloc.dart';
+import 'package:hye_grocery/application/user/user_bloc.dart';
 import 'package:hye_grocery/injection.dart';
 import 'package:hye_grocery/presentation/core/theme/theme.dart';
 import 'package:hye_grocery/presentation/route/router.gr.dart';
@@ -23,6 +24,9 @@ class AppWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<SignUpFormBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<UserBloc>(),
           )
         ],
         child: MaterialApp.router(

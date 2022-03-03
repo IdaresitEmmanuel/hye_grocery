@@ -36,8 +36,20 @@ Either<ValueFailure<String>, String> validatePassword2(String p1, String p2) {
   }
 }
 
+Either<ValueFailure<String>, String> validatePhoneNumberOptional(String input) {
+  String regex = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+  if (RegExp(regex).hasMatch(input)) {
+    return right(input);
+  } else if (input.trim().isEmpty) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidPhoneNumber(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validatePhoneNumber(String input) {
-  if (input.length >= 10) {
+  String regex = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+  if (RegExp(regex).hasMatch(input)) {
     return right(input);
   } else {
     return left(ValueFailure.invalidPhoneNumber(failedValue: input));

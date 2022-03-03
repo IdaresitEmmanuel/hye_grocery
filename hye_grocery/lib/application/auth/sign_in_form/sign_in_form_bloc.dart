@@ -56,10 +56,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       },
       signInWithGooglePressed: (event) async* {
         final result = await iAuthFacade.signInWithGoogle();
-        yield result.fold(
-          (l) => state.copyWith(authFailureOrSuccess: some(left(l))),
-          (r) => state.copyWith(authFailureOrSuccess: none()),
-        );
+        yield state.copyWith(authFailureOrSuccess: some(result));
       },
       signInWithFacebookPressed: (event) async* {},
     );

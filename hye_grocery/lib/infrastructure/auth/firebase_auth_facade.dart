@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +14,8 @@ import 'package:injectable/injectable.dart';
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  final FirebaseFirestore _firestore;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn, this._firestore);
+  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
 
   @override
   Future<Option<MyUser>> getSignedInUser() async {
@@ -80,64 +78,23 @@ class FirebaseAuthFacade implements IAuthFacade {
       final userCredential =
           await _firebaseAuth.signInWithCredential(authCredential);
       final firebaseUser = userCredential.user;
-
-      if (userCredential.additionalUserInfo!.isNewUser &&
-          firebaseUser != null) {
-        final myUser = MyUser(
-            id: UniqueId.fromUniqueString(userCredential.user!.uid),
-            userName: UserName(userCredential.user!.displayName ?? "unknown"),
-            emailAddress:
-                EmailAddress(userCredential.user!.email ?? "unknown"));
-        _firestore
-            .collection("users")
-            .doc(userCredential.user!.uid)
-            .set(myUser.toMap());
-        return right(unit);
-      }
-
-      return left(const AuthFailure.serverError());
+      debugPrint(
+          "username : ${firebaseUser!.displayName}, email: ${firebaseUser.email} phone: ${firebaseUser.phoneNumber}");
+      return right(unit);
     } on PlatformException catch (_) {
-      // error
       return left(const AuthFailure.serverError());
     }
   }
 
   @override
   Future<Either<AuthFailure, Unit>> signUpUser(
-      {required UserName userName,
-      required EmailAddress emailAddress,
-      required PhoneNumber phoneNumber,
-      required Password password}) async {
-    final userNameStr = userName.getOrCrash();
+      {required EmailAddress emailAddress, required Password password}) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-    final phoneNumberStr = phoneNumber.getOrCrash();
     try {
-      print("about to create fb user");
-      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      await _firebaseAuth.createUserWithEmailAndPassword(
           email: emailAddressStr, password: passwordStr);
-      final firebaseUser = userCredential.user;
-
-      if (userCredential.additionalUserInfo!.isNewUser &&
-          firebaseUser != null) {
-        print("about to create user db");
-        final myUser = MyUser(
-            id: UniqueId.fromUniqueString(userCredential.user!.uid),
-            userName: UserName(userNameStr),
-            emailAddress: EmailAddress(userCredential.user!.email ?? "unknown"),
-            phoneNo: PhoneNumber(phoneNumberStr));
-        print("about to create user db in firestore");
-        try {
-          _firestore
-              .collection("users")
-              .doc(userCredential.user!.uid)
-              .set(myUser.toMap());
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-        return right(unit);
-      }
-      return left(const AuthFailure.serverError());
+      return right(unit);
     } on PlatformException catch (e) {
       if (e.code == "email-already-in-use") {
         return left(const AuthFailure.emailAlreadyInUser());

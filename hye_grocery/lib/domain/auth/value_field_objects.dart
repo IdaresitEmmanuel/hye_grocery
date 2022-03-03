@@ -51,8 +51,11 @@ class PhoneNumber extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory PhoneNumber(String input) {
-    return PhoneNumber._(value: validatePhoneNumber(input));
+  factory PhoneNumber(String input, {bool optional = true}) {
+    return PhoneNumber._(
+        value: optional
+            ? validatePhoneNumberOptional(input)
+            : validatePhoneNumber(input));
   }
 
   const PhoneNumber._({required this.value});

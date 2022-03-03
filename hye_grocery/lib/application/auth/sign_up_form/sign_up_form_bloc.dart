@@ -41,14 +41,8 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     }, registerUserPressed: (event) async* {
       yield state.copyWith(showErrorMessages: true);
       final result = await iAuthFacade.signUpUser(
-          userName: state.userName,
-          emailAddress: state.emailAddress,
-          phoneNumber: state.phoneNumber,
-          password: state.password);
-      yield result.fold(
-        (l) => state.copyWith(authFailureOrSuccess: some(left(l))),
-        (r) => state.copyWith(authFailureOrSuccess: none()),
-      );
+          emailAddress: state.emailAddress, password: state.password);
+      yield state.copyWith(authFailureOrSuccess: some(result));
     });
   }
 }
