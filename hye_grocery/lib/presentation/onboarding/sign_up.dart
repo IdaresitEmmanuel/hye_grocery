@@ -93,7 +93,9 @@ class SignUpForm extends StatelessWidget {
             },
             unauthenticated: (_) {
               debugPrint("unauthenticated!!!!!");
-            });
+            },
+            loadingAuthenticationStatus:
+                (LoadingAuthenticationStatus value) {});
       },
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {

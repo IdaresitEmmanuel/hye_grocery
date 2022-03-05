@@ -5,4 +5,5 @@ class HDimensions {
   static double bodyTextSmall = 14.0;
   static double buttonTextSmall = 16.0;
   static double buttonTextMedium = 20.0;
+  static double iconSize = 24.0;
 }

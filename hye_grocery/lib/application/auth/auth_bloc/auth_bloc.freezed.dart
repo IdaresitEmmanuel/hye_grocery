@@ -306,6 +306,10 @@ class _$AuthStateTearOff {
     return const Authenticated();
   }
 
+  LoadingAuthenticationStatus loadingAuthenticationStatus() {
+    return const LoadingAuthenticationStatus();
+  }
+
   Unauthenticated unauthenticated() {
     return const Unauthenticated();
   }
@@ -320,6 +324,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authenticated,
+    required TResult Function() loadingAuthenticationStatus,
     required TResult Function() unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -327,6 +332,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -334,6 +340,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -342,6 +349,8 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
+    required TResult Function(LoadingAuthenticationStatus value)
+        loadingAuthenticationStatus,
     required TResult Function(Unauthenticated value) unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -349,6 +358,8 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -356,6 +367,8 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -417,6 +430,7 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authenticated,
+    required TResult Function() loadingAuthenticationStatus,
     required TResult Function() unauthenticated,
   }) {
     return initial();
@@ -427,6 +441,7 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
   }) {
     return initial?.call();
@@ -437,6 +452,7 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -451,6 +467,8 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
+    required TResult Function(LoadingAuthenticationStatus value)
+        loadingAuthenticationStatus,
     required TResult Function(Unauthenticated value) unauthenticated,
   }) {
     return initial(this);
@@ -461,6 +479,8 @@ class _$Initial implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
   }) {
     return initial?.call(this);
@@ -471,6 +491,8 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {
@@ -527,6 +549,7 @@ class _$Authenticated implements Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authenticated,
+    required TResult Function() loadingAuthenticationStatus,
     required TResult Function() unauthenticated,
   }) {
     return authenticated();
@@ -537,6 +560,7 @@ class _$Authenticated implements Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
   }) {
     return authenticated?.call();
@@ -547,6 +571,7 @@ class _$Authenticated implements Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -561,6 +586,8 @@ class _$Authenticated implements Authenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
+    required TResult Function(LoadingAuthenticationStatus value)
+        loadingAuthenticationStatus,
     required TResult Function(Unauthenticated value) unauthenticated,
   }) {
     return authenticated(this);
@@ -571,6 +598,8 @@ class _$Authenticated implements Authenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
   }) {
     return authenticated?.call(this);
@@ -581,6 +610,8 @@ class _$Authenticated implements Authenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {
@@ -593,6 +624,129 @@ class _$Authenticated implements Authenticated {
 
 abstract class Authenticated implements AuthState {
   const factory Authenticated() = _$Authenticated;
+}
+
+/// @nodoc
+abstract class $LoadingAuthenticationStatusCopyWith<$Res> {
+  factory $LoadingAuthenticationStatusCopyWith(
+          LoadingAuthenticationStatus value,
+          $Res Function(LoadingAuthenticationStatus) then) =
+      _$LoadingAuthenticationStatusCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$LoadingAuthenticationStatusCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements $LoadingAuthenticationStatusCopyWith<$Res> {
+  _$LoadingAuthenticationStatusCopyWithImpl(LoadingAuthenticationStatus _value,
+      $Res Function(LoadingAuthenticationStatus) _then)
+      : super(_value, (v) => _then(v as LoadingAuthenticationStatus));
+
+  @override
+  LoadingAuthenticationStatus get _value =>
+      super._value as LoadingAuthenticationStatus;
+}
+
+/// @nodoc
+
+class _$LoadingAuthenticationStatus implements LoadingAuthenticationStatus {
+  const _$LoadingAuthenticationStatus();
+
+  @override
+  String toString() {
+    return 'AuthState.loadingAuthenticationStatus()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LoadingAuthenticationStatus);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() authenticated,
+    required TResult Function() loadingAuthenticationStatus,
+    required TResult Function() unauthenticated,
+  }) {
+    return loadingAuthenticationStatus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
+    TResult Function()? unauthenticated,
+  }) {
+    return loadingAuthenticationStatus?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
+    TResult Function()? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (loadingAuthenticationStatus != null) {
+      return loadingAuthenticationStatus();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(LoadingAuthenticationStatus value)
+        loadingAuthenticationStatus,
+    required TResult Function(Unauthenticated value) unauthenticated,
+  }) {
+    return loadingAuthenticationStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
+    TResult Function(Unauthenticated value)? unauthenticated,
+  }) {
+    return loadingAuthenticationStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (loadingAuthenticationStatus != null) {
+      return loadingAuthenticationStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingAuthenticationStatus implements AuthState {
+  const factory LoadingAuthenticationStatus() = _$LoadingAuthenticationStatus;
 }
 
 /// @nodoc
@@ -637,6 +791,7 @@ class _$Unauthenticated implements Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authenticated,
+    required TResult Function() loadingAuthenticationStatus,
     required TResult Function() unauthenticated,
   }) {
     return unauthenticated();
@@ -647,6 +802,7 @@ class _$Unauthenticated implements Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
   }) {
     return unauthenticated?.call();
@@ -657,6 +813,7 @@ class _$Unauthenticated implements Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authenticated,
+    TResult Function()? loadingAuthenticationStatus,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -671,6 +828,8 @@ class _$Unauthenticated implements Unauthenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
+    required TResult Function(LoadingAuthenticationStatus value)
+        loadingAuthenticationStatus,
     required TResult Function(Unauthenticated value) unauthenticated,
   }) {
     return unauthenticated(this);
@@ -681,6 +840,8 @@ class _$Unauthenticated implements Unauthenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
   }) {
     return unauthenticated?.call(this);
@@ -691,6 +852,8 @@ class _$Unauthenticated implements Unauthenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
+    TResult Function(LoadingAuthenticationStatus value)?
+        loadingAuthenticationStatus,
     TResult Function(Unauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {

@@ -8,6 +8,7 @@ class HColors {
   static Color secondaryColor = const Color(0xFFFFD600);
   static Color iconColor = const Color(0xFF9F9898);
   static Color dividerColor = const Color(0xFFD8D4D4);
+  static Color captionColor = const Color(0xFFA59F9F);
 
   static Color primaryTextColor = Colors.black;
 }

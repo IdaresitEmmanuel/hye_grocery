@@ -1,9 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hye_grocery/application/auth/auth_bloc/auth_bloc.dart';
-import 'package:hye_grocery/presentation/route/router.gr.dart';
-// import 'package:restart_app/restart_app.dart';
+import 'package:hye_grocery/presentation/root/cart/pages/shopping_cart.dart';
+import 'package:hye_grocery/presentation/root/notification/pages/notification_page.dart';
+import 'package:hye_grocery/presentation/root/order/pages/order_page.dart';
+import 'package:hye_grocery/presentation/root/product/pages/product_page.dart';
+import 'package:hye_grocery/presentation/root/user/pages/profile_page.dart';
+import 'package:hye_grocery/presentation/root/user/widgets/bottom_nav_bar.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -13,28 +14,27 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  final ValueNotifier<int> currentPageNotifier = ValueNotifier<int>(0);
+  List<Widget> pages = const [
+    ProductPage(),
+    OrderPage(),
+    ShoppingCart(),
+    NotificationPage(),
+    ProfilePage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.map(
-              initial: (_) {},
-              authenticated: (_) {
-                debugPrint("Authentication status: authenticated!!");
-              },
-              unauthenticated: (_) {
-                debugPrint("Authentication status: unauthenticated");
-                AutoRouter.of(context).replaceAll([const SignIn()]);
-              });
-        },
-        child: Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.signOut());
-                },
-                child: const Text("Sign out"))),
-      ),
+      bottomNavigationBar:
+          BottomNavBar(currentIndexNotifier: currentPageNotifier),
+      body: ValueListenableBuilder(
+          valueListenable: currentPageNotifier,
+          builder: (context, int index, Widget? child) {
+            return IndexedStack(
+              index: index,
+              children: pages,
+            );
+          }),
     );
   }
 }

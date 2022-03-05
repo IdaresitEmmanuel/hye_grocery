@@ -23,7 +23,9 @@ class SplashPageState extends State<SplashPage> {
             },
             unauthenticated: (_) {
               AutoRouter.of(context).replace(const GettingStarted());
-            });
+            },
+            loadingAuthenticationStatus:
+                (LoadingAuthenticationStatus value) {});
       },
       child: const Scaffold(
         body: Center(child: CircularProgressIndicator()),

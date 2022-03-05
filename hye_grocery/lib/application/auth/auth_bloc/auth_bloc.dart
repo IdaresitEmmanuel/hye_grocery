@@ -21,6 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield result.fold(() => const AuthState.unauthenticated(),
           (_) => const AuthState.authenticated());
     }, signOut: (event) async* {
+      yield const AuthState.loadingAuthenticationStatus();
       await iAuthFacade.signOut();
       yield const AuthState.unauthenticated();
     });
