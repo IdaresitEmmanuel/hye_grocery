@@ -46,10 +46,10 @@ class MyUser {
   factory MyUser.fromMap(Map<String, dynamic> map) {
     return MyUser(
       id: UniqueId.fromUniqueString(map['id']),
-      userName: map['displayName'] ?? '',
+      userName: UserName(map['userName']),
       emailAddress: EmailAddress(map['emailAddress']),
-      phoneNo: map['phoneNo'],
-      photoUrl: map['photoUrl'],
+      phoneNo: PhoneNumber(map['phoneNo']),
+      photoUrl: map['photoUrl'] ?? '',
     );
   }
 

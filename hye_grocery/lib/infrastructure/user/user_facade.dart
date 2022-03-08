@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hye_grocery/domain/auth/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/core/value_objects.dart';
@@ -16,14 +17,31 @@ class UserFacade extends IUserFacade {
   final FirebaseFirestore _firestore;
 
   UserFacade(this._firebaseAuth, this._firestore);
+
+  @override
+  Future<Either<UserFailure, MyUser>> getUser() async {
+    final fbUser = _firebaseAuth.currentUser;
+
+    if (fbUser != null) {
+      DocumentSnapshot<Object?> doc =
+          await _firestore.usersCollection.doc(fbUser.uid).get();
+      if (doc.exists) {
+        debugPrint("User document exist");
+        return right(MyUser.fromMap(doc.data() as Map<String, dynamic>));
+      }
+      debugPrint("User document does not exist");
+    }
+    return left(const UserFailure.networkFailure());
+  }
+
   @override
   Future<Either<UserFailure, MyUser>> createOrUpdateUser(
-      {required UserName userName, required PhoneNumber phoneNumber}) async {
+      {required UserName? userName, required PhoneNumber phoneNumber}) async {
     final firebaseUser = _firebaseAuth.currentUser;
     if (firebaseUser != null) {
       final MyUser user = MyUser(
           id: UniqueId.fromUniqueString(firebaseUser.uid),
-          userName: userName,
+          userName: userName ?? UserName(firebaseUser.displayName!),
           emailAddress: EmailAddress(firebaseUser.email!),
           phoneNo: phoneNumber);
       await _firestore.usersCollection.doc(firebaseUser.uid).set(user.toMap());

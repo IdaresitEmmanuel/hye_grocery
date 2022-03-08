@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hye_grocery/application/user/user_bloc.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/circle_image.dart';
 import 'package:hye_grocery/presentation/root/user/widgets/log_out_dialog.dart';
@@ -81,23 +83,28 @@ class UserShowCase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 10.0, bottom: 20.0),
-      child: Column(
-        children: [
-          Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(vertical: 10.0),
-              child: CircleImage(
-                  image: Image.asset("assets/images/hyebreed.jpg").image)),
-          Text("Emmanuel", style: Theme.of(context).primaryTextTheme.bodyLarge),
-          Text("idaresitimmanuel@gmail.com",
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .bodySmall!
-                  .copyWith(color: HColors.captionColor)),
-        ],
-      ),
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return Container(
+          margin: const EdgeInsets.only(top: 10.0, bottom: 20.0),
+          child: Column(
+            children: [
+              Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: CircleImage(
+                      image: Image.asset("assets/images/hyebreed.jpg").image)),
+              Text(state.user!.userName.getOrCrash(),
+                  style: Theme.of(context).primaryTextTheme.bodyLarge),
+              Text(state.user!.emailAddress.getOrCrash(),
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodySmall!
+                      .copyWith(color: HColors.captionColor)),
+            ],
+          ),
+        );
+      },
     );
   }
 }

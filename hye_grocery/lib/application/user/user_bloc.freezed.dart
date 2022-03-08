@@ -18,8 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserEventTearOff {
   const _$UserEventTearOff();
 
+  GetCurrentUser getCurrentUser() {
+    return const GetCurrentUser();
+  }
+
   CreateOrUpdateUser createOrUpdateUser(
-      {required UserName username, required PhoneNumber phoneNumber}) {
+      {required UserName? username, required PhoneNumber phoneNumber}) {
     return CreateOrUpdateUser(
       username: username,
       phoneNumber: phoneNumber,
@@ -38,21 +42,24 @@ const $UserEvent = _$UserEventTearOff();
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserName username, PhoneNumber phoneNumber)
+    required TResult Function() getCurrentUser,
+    required TResult Function(UserName? username, PhoneNumber phoneNumber)
         createOrUpdateUser,
     required TResult Function() deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
     required TResult orElse(),
@@ -60,18 +67,21 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentUser value) getCurrentUser,
     required TResult Function(CreateOrUpdateUser value) createOrUpdateUser,
     required TResult Function(DeleteUser value) deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
     required TResult orElse(),
@@ -95,11 +105,124 @@ class _$UserEventCopyWithImpl<$Res> implements $UserEventCopyWith<$Res> {
 }
 
 /// @nodoc
+abstract class $GetCurrentUserCopyWith<$Res> {
+  factory $GetCurrentUserCopyWith(
+          GetCurrentUser value, $Res Function(GetCurrentUser) then) =
+      _$GetCurrentUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetCurrentUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
+    implements $GetCurrentUserCopyWith<$Res> {
+  _$GetCurrentUserCopyWithImpl(
+      GetCurrentUser _value, $Res Function(GetCurrentUser) _then)
+      : super(_value, (v) => _then(v as GetCurrentUser));
+
+  @override
+  GetCurrentUser get _value => super._value as GetCurrentUser;
+}
+
+/// @nodoc
+
+class _$GetCurrentUser implements GetCurrentUser {
+  const _$GetCurrentUser();
+
+  @override
+  String toString() {
+    return 'UserEvent.getCurrentUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetCurrentUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCurrentUser,
+    required TResult Function(UserName? username, PhoneNumber phoneNumber)
+        createOrUpdateUser,
+    required TResult Function() deleteUser,
+  }) {
+    return getCurrentUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
+        createOrUpdateUser,
+    TResult Function()? deleteUser,
+  }) {
+    return getCurrentUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
+        createOrUpdateUser,
+    TResult Function()? deleteUser,
+    required TResult orElse(),
+  }) {
+    if (getCurrentUser != null) {
+      return getCurrentUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentUser value) getCurrentUser,
+    required TResult Function(CreateOrUpdateUser value) createOrUpdateUser,
+    required TResult Function(DeleteUser value) deleteUser,
+  }) {
+    return getCurrentUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
+    TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
+    TResult Function(DeleteUser value)? deleteUser,
+  }) {
+    return getCurrentUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
+    TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
+    TResult Function(DeleteUser value)? deleteUser,
+    required TResult orElse(),
+  }) {
+    if (getCurrentUser != null) {
+      return getCurrentUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCurrentUser implements UserEvent {
+  const factory GetCurrentUser() = _$GetCurrentUser;
+}
+
+/// @nodoc
 abstract class $CreateOrUpdateUserCopyWith<$Res> {
   factory $CreateOrUpdateUserCopyWith(
           CreateOrUpdateUser value, $Res Function(CreateOrUpdateUser) then) =
       _$CreateOrUpdateUserCopyWithImpl<$Res>;
-  $Res call({UserName username, PhoneNumber phoneNumber});
+  $Res call({UserName? username, PhoneNumber phoneNumber});
 }
 
 /// @nodoc
@@ -122,7 +245,7 @@ class _$CreateOrUpdateUserCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as UserName,
+              as UserName?,
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -138,7 +261,7 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
       {required this.username, required this.phoneNumber});
 
   @override
-  final UserName username;
+  final UserName? username;
   @override
   final PhoneNumber phoneNumber;
 
@@ -171,7 +294,8 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserName username, PhoneNumber phoneNumber)
+    required TResult Function() getCurrentUser,
+    required TResult Function(UserName? username, PhoneNumber phoneNumber)
         createOrUpdateUser,
     required TResult Function() deleteUser,
   }) {
@@ -181,7 +305,8 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
   }) {
@@ -191,7 +316,8 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
     required TResult orElse(),
@@ -205,6 +331,7 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentUser value) getCurrentUser,
     required TResult Function(CreateOrUpdateUser value) createOrUpdateUser,
     required TResult Function(DeleteUser value) deleteUser,
   }) {
@@ -214,6 +341,7 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
   }) {
@@ -223,6 +351,7 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
     required TResult orElse(),
@@ -236,10 +365,10 @@ class _$CreateOrUpdateUser implements CreateOrUpdateUser {
 
 abstract class CreateOrUpdateUser implements UserEvent {
   const factory CreateOrUpdateUser(
-      {required UserName username,
+      {required UserName? username,
       required PhoneNumber phoneNumber}) = _$CreateOrUpdateUser;
 
-  UserName get username;
+  UserName? get username;
   PhoneNumber get phoneNumber;
   @JsonKey(ignore: true)
   $CreateOrUpdateUserCopyWith<CreateOrUpdateUser> get copyWith =>
@@ -285,7 +414,8 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserName username, PhoneNumber phoneNumber)
+    required TResult Function() getCurrentUser,
+    required TResult Function(UserName? username, PhoneNumber phoneNumber)
         createOrUpdateUser,
     required TResult Function() deleteUser,
   }) {
@@ -295,7 +425,8 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
   }) {
@@ -305,7 +436,8 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserName username, PhoneNumber phoneNumber)?
+    TResult Function()? getCurrentUser,
+    TResult Function(UserName? username, PhoneNumber phoneNumber)?
         createOrUpdateUser,
     TResult Function()? deleteUser,
     required TResult orElse(),
@@ -319,6 +451,7 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentUser value) getCurrentUser,
     required TResult Function(CreateOrUpdateUser value) createOrUpdateUser,
     required TResult Function(DeleteUser value) deleteUser,
   }) {
@@ -328,6 +461,7 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
   }) {
@@ -337,6 +471,7 @@ class _$DeleteUser implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentUser value)? getCurrentUser,
     TResult Function(CreateOrUpdateUser value)? createOrUpdateUser,
     TResult Function(DeleteUser value)? deleteUser,
     required TResult orElse(),
@@ -356,9 +491,14 @@ abstract class DeleteUser implements UserEvent {
 class _$UserStateTearOff {
   const _$UserStateTearOff();
 
-  _UserState call({MyUser? signedInUser}) {
+  _UserState call(
+      {required MyUser? user,
+      required bool? isLoading,
+      required Option<Either<UserFailure, Unit>> userFailureOrSuccess}) {
     return _UserState(
-      signedInUser: signedInUser,
+      user: user,
+      isLoading: isLoading,
+      userFailureOrSuccess: userFailureOrSuccess,
     );
   }
 }
@@ -368,7 +508,10 @@ const $UserState = _$UserStateTearOff();
 
 /// @nodoc
 mixin _$UserState {
-  MyUser? get signedInUser => throw _privateConstructorUsedError;
+  MyUser? get user => throw _privateConstructorUsedError;
+  bool? get isLoading => throw _privateConstructorUsedError;
+  Option<Either<UserFailure, Unit>> get userFailureOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserStateCopyWith<UserState> get copyWith =>
@@ -379,7 +522,10 @@ mixin _$UserState {
 abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res>;
-  $Res call({MyUser? signedInUser});
+  $Res call(
+      {MyUser? user,
+      bool? isLoading,
+      Option<Either<UserFailure, Unit>> userFailureOrSuccess});
 }
 
 /// @nodoc
@@ -392,13 +538,23 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? signedInUser = freezed,
+    Object? user = freezed,
+    Object? isLoading = freezed,
+    Object? userFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      signedInUser: signedInUser == freezed
-          ? _value.signedInUser
-          : signedInUser // ignore: cast_nullable_to_non_nullable
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
               as MyUser?,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      userFailureOrSuccess: userFailureOrSuccess == freezed
+          ? _value.userFailureOrSuccess
+          : userFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<UserFailure, Unit>>,
     ));
   }
 }
@@ -409,7 +565,10 @@ abstract class _$UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
           _UserState value, $Res Function(_UserState) then) =
       __$UserStateCopyWithImpl<$Res>;
   @override
-  $Res call({MyUser? signedInUser});
+  $Res call(
+      {MyUser? user,
+      bool? isLoading,
+      Option<Either<UserFailure, Unit>> userFailureOrSuccess});
 }
 
 /// @nodoc
@@ -423,13 +582,23 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? signedInUser = freezed,
+    Object? user = freezed,
+    Object? isLoading = freezed,
+    Object? userFailureOrSuccess = freezed,
   }) {
     return _then(_UserState(
-      signedInUser: signedInUser == freezed
-          ? _value.signedInUser
-          : signedInUser // ignore: cast_nullable_to_non_nullable
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
               as MyUser?,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      userFailureOrSuccess: userFailureOrSuccess == freezed
+          ? _value.userFailureOrSuccess
+          : userFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<UserFailure, Unit>>,
     ));
   }
 }
@@ -437,14 +606,21 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserState implements _UserState {
-  const _$_UserState({this.signedInUser});
+  const _$_UserState(
+      {required this.user,
+      required this.isLoading,
+      required this.userFailureOrSuccess});
 
   @override
-  final MyUser? signedInUser;
+  final MyUser? user;
+  @override
+  final bool? isLoading;
+  @override
+  final Option<Either<UserFailure, Unit>> userFailureOrSuccess;
 
   @override
   String toString() {
-    return 'UserState(signedInUser: $signedInUser)';
+    return 'UserState(user: $user, isLoading: $isLoading, userFailureOrSuccess: $userFailureOrSuccess)';
   }
 
   @override
@@ -452,13 +628,18 @@ class _$_UserState implements _UserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserState &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
-                .equals(other.signedInUser, signedInUser));
+                .equals(other.userFailureOrSuccess, userFailureOrSuccess));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(signedInUser));
+      runtimeType,
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(userFailureOrSuccess));
 
   @JsonKey(ignore: true)
   @override
@@ -467,10 +648,18 @@ class _$_UserState implements _UserState {
 }
 
 abstract class _UserState implements UserState {
-  const factory _UserState({MyUser? signedInUser}) = _$_UserState;
+  const factory _UserState(
+          {required MyUser? user,
+          required bool? isLoading,
+          required Option<Either<UserFailure, Unit>> userFailureOrSuccess}) =
+      _$_UserState;
 
   @override
-  MyUser? get signedInUser;
+  MyUser? get user;
+  @override
+  bool? get isLoading;
+  @override
+  Option<Either<UserFailure, Unit>> get userFailureOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$UserStateCopyWith<_UserState> get copyWith =>

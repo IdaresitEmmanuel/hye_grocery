@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:hye_grocery/application/user/user_bloc.dart';
+import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/hform_field.dart';
@@ -94,133 +96,150 @@ class SignInForm extends StatelessWidget {
             },
             orElse: () {});
       },
-      child: BlocConsumer<SignInFormBloc, SignInFormState>(
-        listener: (context, state) {
-          state.authFailureOrSuccess.fold(
+      child: BlocListener<UserBloc, UserState>(
+        listener: (uContext, uState) {
+          if (uState.user == null) {
+            debugPrint("Creating new user...");
+            context.read<UserBloc>().add(UserEvent.createOrUpdateUser(
+                username: null, phoneNumber: PhoneNumber("")));
+          } else {
+            debugPrint("Requesting authentication status...");
+            context.read<AuthBloc>().add(const AuthEvent.requestAuthStatus());
+          }
+        },
+        child: BlocConsumer<SignInFormBloc, SignInFormState>(
+          listener: (context, state) {
+            state.authFailureOrSuccess.fold(
               () => null,
-              (either) => either.fold((failure) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("sign in unsuccessful!")));
-                  }, (r) {
-                    context
-                        .read<AuthBloc>()
-                        .add(const AuthEvent.requestAuthStatus());
-                  }));
-        },
-        builder: (context, state) {
-          return Form(
-              autovalidateMode: state.showErrorMessages
-                  ? AutovalidateMode.always
-                  : AutovalidateMode.disabled,
-              child: Column(
-                children: [
-                  HFormField(
-                    hintText: "Email",
-                    icon: Icons.email_rounded,
-                    onChanged: (value) => context
-                        .read<SignInFormBloc>()
-                        .add(SignInFormEvent.emailChanged(value)),
-                    validator: (_) => context
-                        .read<SignInFormBloc>()
-                        .state
-                        .emailAddress
-                        .value
-                        .fold(
-                          (f) => f.maybeMap(
-                              invalidEmail: (_) => 'Invalid Email',
-                              orElse: () => null),
-                          (_) => null,
-                        ),
-                  ),
-                  HFormField(
-                    hintText: "Password",
-                    icon: Icons.lock_rounded,
-                    obscureText: true,
-                    onChanged: (value) => context
-                        .read<SignInFormBloc>()
-                        .add(SignInFormEvent.passwordChanged(value)),
-                    validator: (_) => context
-                        .read<SignInFormBloc>()
-                        .state
-                        .password
-                        .value
-                        .fold(
-                          (f) => f.maybeMap(
-                              shortPassword: (_) => 'Short Password',
-                              orElse: () => null),
-                          (_) => null,
-                        ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    alignment: Alignment.centerRight,
-                    child: const Text(
-                      "Forgot you password?",
-                      textAlign: TextAlign.end,
+              (either) => either.fold(
+                (failure) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("sign in unsuccessful!")));
+                },
+                (r) {
+                  debugPrint("Requesting user document...");
+                  context
+                      .read<UserBloc>()
+                      .add(const UserEvent.getCurrentUser());
+                },
+              ),
+            );
+          },
+          builder: (context, state) {
+            return Form(
+                autovalidateMode: state.showErrorMessages
+                    ? AutovalidateMode.always
+                    : AutovalidateMode.disabled,
+                child: Column(
+                  children: [
+                    HFormField(
+                      hintText: "Email",
+                      icon: Icons.email_rounded,
+                      onChanged: (value) => context
+                          .read<SignInFormBloc>()
+                          .add(SignInFormEvent.emailChanged(value)),
+                      validator: (_) => context
+                          .read<SignInFormBloc>()
+                          .state
+                          .emailAddress
+                          .value
+                          .fold(
+                            (f) => f.maybeMap(
+                                invalidEmail: (_) => 'Invalid Email',
+                                orElse: () => null),
+                            (_) => null,
+                          ),
                     ),
-                  ),
-                  Container(
-                      margin: const EdgeInsets.symmetric(vertical: 20.0),
+                    HFormField(
+                      hintText: "Password",
+                      icon: Icons.lock_rounded,
+                      obscureText: true,
+                      onChanged: (value) => context
+                          .read<SignInFormBloc>()
+                          .add(SignInFormEvent.passwordChanged(value)),
+                      validator: (_) => context
+                          .read<SignInFormBloc>()
+                          .state
+                          .password
+                          .value
+                          .fold(
+                            (f) => f.maybeMap(
+                                shortPassword: (_) => 'Short Password',
+                                orElse: () => null),
+                            (_) => null,
+                          ),
+                    ),
+                    Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: RoundButton(
-                          text: "Sign In",
-                          onTap: () {
-                            context.read<SignInFormBloc>().add(
-                                const SignInFormEvent
-                                    .signInWithEmailAndPasswordPressed());
-                          })),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      children: const [
-                        Expanded(child: Divider()),
-                        SizedBox(width: 10.0),
-                        Text("Or sign in using"),
-                        SizedBox(width: 10.0),
-                        Expanded(child: Divider()),
-                      ],
+                      alignment: Alignment.centerRight,
+                      child: const Text(
+                        "Forgot you password?",
+                        textAlign: TextAlign.end,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10.0),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            "assets/images/facebook_logo.png",
-                            width: 24.0,
-                            height: 24.0,
-                          ),
-                          label: const Text("Facebook"),
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFF43609C),
-                          ),
-                        ),
-                        const SizedBox(width: 20.0),
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            context.read<SignInFormBloc>().add(
-                                const SignInFormEvent
-                                    .signInWithGooglePressed());
-                          },
-                          icon: Image.asset(
-                            "assets/images/google_logo.png",
-                            width: 20.0,
-                          ),
-                          label: const Text("Google"),
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFFDD4B39),
-                          ),
-                        )
-                      ],
+                    Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: RoundButton(
+                            text: "Sign In",
+                            onTap: () {
+                              context.read<SignInFormBloc>().add(
+                                  const SignInFormEvent
+                                      .signInWithEmailAndPasswordPressed());
+                            })),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        children: const [
+                          Expanded(child: Divider()),
+                          SizedBox(width: 10.0),
+                          Text("Or sign in using"),
+                          SizedBox(width: 10.0),
+                          Expanded(child: Divider()),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ));
-        },
+                    const SizedBox(height: 10.0),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: Image.asset(
+                              "assets/images/facebook_logo.png",
+                              width: 24.0,
+                              height: 24.0,
+                            ),
+                            label: const Text("Facebook"),
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color(0xFF43609C),
+                            ),
+                          ),
+                          const SizedBox(width: 20.0),
+                          ElevatedButton.icon(
+                            onPressed: () {
+                              context.read<SignInFormBloc>().add(
+                                  const SignInFormEvent
+                                      .signInWithGooglePressed());
+                            },
+                            icon: Image.asset(
+                              "assets/images/google_logo.png",
+                              width: 20.0,
+                            ),
+                            label: const Text("Google"),
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color(0xFFDD4B39),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ));
+          },
+        ),
       ),
     );
   }

@@ -99,9 +99,11 @@ class SignUpForm extends StatelessWidget {
       },
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
-          if (state.signedInUser != null) {
-            context.read<AuthBloc>().add(const AuthEvent.requestAuthStatus());
-          }
+          state.userFailureOrSuccess.map((either) => either.fold(
+              (l) => {},
+              (r) => context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.requestAuthStatus())));
         },
         child: BlocConsumer<SignUpFormBloc, SignUpFormState>(
           listener: (context, state) {
