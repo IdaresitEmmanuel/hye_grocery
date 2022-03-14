@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import "package:flutter/material.dart";
 import 'package:hye_grocery/presentation/onboarding/widgets/carousel_marker.dart';
-import 'package:hye_grocery/presentation/onboarding/widgets/rect_button.dart';
+import 'package:hye_grocery/presentation/core/widgets/rect_button.dart';
 import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class GettingStarted extends StatefulWidget {

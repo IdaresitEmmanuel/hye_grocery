@@ -9,12 +9,14 @@ class MyUser {
   EmailAddress emailAddress;
   PhoneNumber? phoneNo;
   String? photoUrl;
+  String? photoStorageLocation;
   MyUser({
     required this.id,
     required this.userName,
     required this.emailAddress,
     this.phoneNo,
     this.photoUrl,
+    this.photoStorageLocation,
   });
 
   MyUser copyWith({
@@ -23,6 +25,7 @@ class MyUser {
     EmailAddress? emailAddress,
     PhoneNumber? phoneNo,
     String? photoUrl,
+    String? photoStorageLocation,
   }) {
     return MyUser(
       id: id ?? this.id,
@@ -30,6 +33,7 @@ class MyUser {
       emailAddress: emailAddress ?? this.emailAddress,
       phoneNo: phoneNo ?? this.phoneNo,
       photoUrl: photoUrl ?? this.photoUrl,
+      photoStorageLocation: photoStorageLocation ?? this.photoStorageLocation,
     );
   }
 
@@ -40,6 +44,7 @@ class MyUser {
       'emailAddress': emailAddress.getOrCrash(),
       'phoneNo': phoneNo!.value.getOrElse(() => ""),
       'photoUrl': photoUrl,
+      'photoStorageLocation': photoStorageLocation,
     };
   }
 
@@ -50,6 +55,7 @@ class MyUser {
       emailAddress: EmailAddress(map['emailAddress']),
       phoneNo: PhoneNumber(map['phoneNo']),
       photoUrl: map['photoUrl'] ?? '',
+      photoStorageLocation: map['photoStorageLocation'] ?? '',
     );
   }
 
@@ -59,7 +65,7 @@ class MyUser {
 
   @override
   String toString() {
-    return 'MyUser(id: $id, displayName: $userName, emailAddress: $emailAddress, phoneNo: $phoneNo, photoUrl: $photoUrl)';
+    return 'MyUser(id: $id, displayName: $userName, emailAddress: $emailAddress, phoneNo: $phoneNo, photoUrl: $photoUrl, photoStorageLocation: $photoStorageLocation)';
   }
 
   @override
@@ -71,7 +77,8 @@ class MyUser {
         other.userName == userName &&
         other.emailAddress == emailAddress &&
         other.phoneNo == phoneNo &&
-        other.photoUrl == photoUrl;
+        other.photoUrl == photoUrl &&
+        other.photoStorageLocation == photoStorageLocation;
   }
 
   @override
@@ -80,6 +87,7 @@ class MyUser {
         userName.hashCode ^
         emailAddress.hashCode ^
         phoneNo.hashCode ^
-        photoUrl.hashCode;
+        photoUrl.hashCode ^
+        photoStorageLocation.hashCode;
   }
 }

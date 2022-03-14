@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/product/product_bloc.dart';
 import 'package:hye_grocery/application/user/user_bloc.dart';
+import 'package:hye_grocery/domain/product/product.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/root/product/widgets/product_model.dart';
@@ -38,6 +39,9 @@ class _ProductPageState extends State<ProductPage>
               margin: const EdgeInsets.symmetric(vertical: 10.0),
               child: BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
+                  if (state.user == null) {
+                    return const SizedBox.shrink();
+                  }
                   return ListTile(
                     title: Text(
                         "Hello ${state.user!.userName.value.getOrElse(() => "").split(' ').first}",
@@ -53,8 +57,14 @@ class _ProductPageState extends State<ProductPage>
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
                           image: DecorationImage(
-                              image: Image.asset("assets/images/hyebreed.jpg")
-                                  .image)),
+                              fit: BoxFit.cover,
+                              image: state.user!.photoUrl == null ||
+                                      state.user!.photoUrl!.trim().isEmpty
+                                  ? Image.asset(
+                                          "assets/images/default_user_image.png")
+                                      .image
+                                  : Image.network(state.user!.photoUrl!)
+                                      .image)),
                     ),
                   );
                 },
@@ -91,9 +101,9 @@ class _ProductPageState extends State<ProductPage>
                   preloadPagesCount: 6,
                   controller: _pageController,
                   children: const [
-                    Category(name: "vegetables"),
-                    Center(child: Text("Fruits")),
-                    Center(child: Text("Drinks")),
+                    Category(name: "vegetable"),
+                    Category(name: "fruit"),
+                    Category(name: "drink"),
                     Center(child: Text("Dairy")),
                     Center(child: Text("Food")),
                     Center(child: Text("Cakes")),
@@ -118,11 +128,24 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
+        if (state.isLoading) {
+          return Center(
+            child: CircularProgressIndicator(color: HColors.primaryColor),
+          );
+        }
         if (state.products.isEmpty) {
           return const Center(
             child: Text("There is no data"),
           );
         }
+        List<Product> tempProducts = [];
+        for (var element in state.products) {
+          if (element.category == widget.name) {
+            tempProducts.add(element);
+          }
+        }
+
+        // tempProducts;
         return GridView.builder(
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -132,9 +155,9 @@ class _CategoryState extends State<Category> {
             crossAxisCount: 2,
             childAspectRatio: 40 / 60,
           ),
-          itemCount: state.products.length,
+          itemCount: tempProducts.length,
           itemBuilder: (context, index) {
-            final product = state.products[index];
+            final product = tempProducts[index];
             return ProductModel(
                 imageString: product.imageUrl,
                 name: product.name,

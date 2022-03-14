@@ -20,6 +20,7 @@ class ProductFacade extends IProductFacade {
         final product = Product.fromMap(element.data() as Map<String, dynamic>);
         tempProductList.add(product);
       }
+      debugPrint("There are ${tempProductList.length} products available");
       return right(tempProductList);
     } catch (e) {
       debugPrint(e.toString());

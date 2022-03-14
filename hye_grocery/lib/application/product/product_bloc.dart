@@ -21,12 +21,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     yield* event.map(requestProduct: (event) async* {
       yield state.copyWith(isLoading: true);
       final result = await _iProductFacade.getProducts();
-      yield state.copyWith(isLoading: false);
       yield result.fold(
         (l) => state.copyWith(
-            products: [], productRequestFailureOrSucces: some(left(l))),
+            isLoading: false,
+            products: [],
+            productRequestFailureOrSucces: some(left(l))),
         (r) => state.copyWith(
-            products: r, productRequestFailureOrSucces: some(right(unit))),
+            isLoading: false,
+            products: r,
+            productRequestFailureOrSucces: some(right(unit))),
       );
     });
   }

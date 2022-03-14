@@ -3,7 +3,7 @@ import 'package:hye_grocery/presentation/root/cart/pages/shopping_cart.dart';
 import 'package:hye_grocery/presentation/root/notification/pages/notification_page.dart';
 import 'package:hye_grocery/presentation/root/order/pages/order_page.dart';
 import 'package:hye_grocery/presentation/root/product/pages/product_page.dart';
-import 'package:hye_grocery/presentation/root/user/pages/profile_page.dart';
+import 'package:hye_grocery/presentation/root/user/user_page.dart';
 import 'package:hye_grocery/presentation/root/user/widgets/bottom_nav_bar.dart';
 
 class RootPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _RootPageState extends State<RootPage> {
     OrderPage(),
     ShoppingCart(),
     NotificationPage(),
-    ProfilePage(),
+    UserPage(),
   ];
   @override
   Widget build(BuildContext context) {
