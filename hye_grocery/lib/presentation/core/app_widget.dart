@@ -4,6 +4,7 @@ import 'package:hye_grocery/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:hye_grocery/application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:hye_grocery/application/product/product_bloc.dart';
+import 'package:hye_grocery/application/profile/profile_bloc.dart';
 import 'package:hye_grocery/application/user/user_bloc.dart';
 import 'package:hye_grocery/injection.dart';
 import 'package:hye_grocery/presentation/core/theme/theme.dart';
@@ -32,6 +33,9 @@ class AppWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<ProductBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<ProfileBloc>(),
           )
         ],
         child: MaterialApp.router(

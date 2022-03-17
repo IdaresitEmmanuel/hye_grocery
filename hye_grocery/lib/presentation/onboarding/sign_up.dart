@@ -166,7 +166,7 @@ class SignUpForm extends StatelessWidget {
                           ),
                     ),
                     HFormField(
-                      hintText: "Phone",
+                      hintText: "Phone (Optional)",
                       icon: Icons.phone_android_rounded,
                       onChanged: (value) {
                         context

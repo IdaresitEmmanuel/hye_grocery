@@ -1,10 +1,7 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hye_grocery/domain/auth/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/core/value_objects.dart';
@@ -17,8 +14,7 @@ import 'package:hye_grocery/infrastructure/core/firebase_extensions.dart';
 class UserFacade extends IUserFacade {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
-  final FirebaseStorage _firebaseStorage;
-  UserFacade(this._firebaseAuth, this._firestore, this._firebaseStorage);
+  UserFacade(this._firebaseAuth, this._firestore);
 
   @override
   Future<Either<UserFailure, MyUser>> getUser() async {
@@ -39,12 +35,6 @@ class UserFacade extends IUserFacade {
   @override
   Future<Either<UserFailure, MyUser>> createOrUpdateUser(
       {required UserName? userName, required PhoneNumber? phoneNumber}) async {
-    if (userName != null) {
-      userName.getOrCrash();
-    }
-    if (phoneNumber != null) {
-      phoneNumber.getOrCrash();
-    }
     final firebaseUser = _firebaseAuth.currentUser;
 
     if (firebaseUser != null) {
@@ -53,10 +43,16 @@ class UserFacade extends IUserFacade {
           userName: userName ?? UserName(firebaseUser.displayName!),
           emailAddress: EmailAddress(firebaseUser.email!),
           phoneNo: phoneNumber);
-      await _firestore.usersCollection.doc(firebaseUser.uid).set(user.toMap());
-      return right(user);
+      try {
+        await _firestore.usersCollection
+            .doc(firebaseUser.uid)
+            .set(user.toMap());
+        return right(user);
+      } catch (e) {
+        return left(const UserFailure.networkFailure());
+      }
     }
-    return left(const UserFailure.networkFailure());
+    return left(const UserFailure.userDoesNotExist());
   }
 
   @override
@@ -67,51 +63,5 @@ class UserFacade extends IUserFacade {
       return right(unit);
     }
     return left(const UserFailure.networkFailure());
-  }
-
-  @override
-  Future<Either<UserFailure, Unit>> deleteProfileImage(
-      {required String imageStorageLocation}) async {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser != null) {
-      try {
-        await _firebaseStorage.ref(imageStorageLocation).delete();
-        await _firestore.usersCollection
-            .doc(firebaseUser.uid)
-            .update({"photoUrl": "", "photoStorageLocation": ""});
-        return right(unit);
-      } catch (e) {
-        log(e.toString());
-        return left(const UserFailure.networkFailure());
-      }
-    }
-    return left(const UserFailure.userDoesNotExist());
-  }
-
-  @override
-  Future<Either<UserFailure, Unit>> updateProfileImage(
-      {required String fileName, required File file}) async {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser != null) {
-      try {
-        final result = await _firebaseStorage
-            .ref("profile_images/${firebaseUser.uid}/$fileName")
-            .putFile(file);
-        final storageLocation = await result.ref.getMetadata();
-
-        final url = await result.ref.getDownloadURL();
-        log("this is the download url $url");
-        await _firestore.usersCollection.doc(firebaseUser.uid).update({
-          "photoUrl": url,
-          "photoStorageLocation": storageLocation.fullPath
-        });
-
-        return right(unit);
-      } catch (e) {
-        //error
-        return left(const UserFailure.networkFailure());
-      }
-    }
-    return left(const UserFailure.userDoesNotExist());
   }
 }

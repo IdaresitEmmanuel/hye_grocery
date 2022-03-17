@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,55 +19,34 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   @override
   Stream<UserState> mapEventToState(UserEvent event) async* {
-    yield* event.map(createOrUpdateUser: (event) async* {
-      yield state.copyWith(showEditErrorMessage: true);
-      final result = await iUserFacade.createOrUpdateUser(
-          userName: event.username, phoneNumber: event.phoneNumber);
-      yield result.fold(
-          (l) =>
-              state.copyWith(user: null, userFailureOrSuccess: some(left(l))),
-          (r) =>
-              state.copyWith(user: r, userFailureOrSuccess: some(right(unit))));
-      log("This is to check if the run stack reaches here");
-      // it doesn't reach once there is a crash!!!
-    }, deleteUser: (event) async* {
-      final result = await iUserFacade.deleteUser();
-      yield result.fold((l) => state.copyWith(),
-          (r) => state.copyWith(userFailureOrSuccess: none()));
-    }, getCurrentUser: (value) async* {
-      yield state.copyWith(isLoading: true, isImageLoading: true);
-      final result = await iUserFacade.getUser();
-      yield result.fold(
-          (l) => state.copyWith(
-              user: null,
-              isLoading: false,
-              isImageLoading: false,
-              userFailureOrSuccess: some(left(l))),
-          (r) => state.copyWith(
-              user: r,
-              isLoading: false,
-              isImageLoading: false,
-              userFailureOrSuccess: some(right(unit))));
-    }, deleteProfileImage: (event) async* {
-      yield state.copyWith(isImageLoading: true);
-      final result = await iUserFacade.deleteProfileImage(
-          imageStorageLocation: event.imageStorageLocation);
-      result.fold((l) => state.copyWith(isImageLoading: false),
-          (r) => state.copyWith(isImageLoading: false));
-      add(const UserEvent.getCurrentUser());
-    }, updateProfileImage: (event) async* {
-      yield state.copyWith(isImageLoading: true);
-      final result = await iUserFacade.updateProfileImage(
-          fileName: event.fileName, file: event.file);
-      yield result.fold((l) => state.copyWith(isImageLoading: false),
-          (r) => state.copyWith());
-      add(const UserEvent.getCurrentUser());
-    }, setEditPhonenumber: (event) async* {
-      yield state.copyWith(editPhonenumber: PhoneNumber(event.value));
-    }, setEditUsername: (event) async* {
-      yield state.copyWith(editUsername: UserName(event.value));
-    }, refreshEdit: (edit) async* {
-      yield state.copyWith(showEditErrorMessage: false);
-    });
+    yield* event.map(
+      createOrUpdateUser: (event) async* {
+        final result = await iUserFacade.createOrUpdateUser(
+            userName: event.username, phoneNumber: event.phoneNumber);
+        yield result.fold(
+            (l) =>
+                state.copyWith(user: null, userFailureOrSuccess: some(left(l))),
+            (r) => state.copyWith(
+                user: r, userFailureOrSuccess: some(right(unit))));
+      },
+      deleteUser: (event) async* {
+        final result = await iUserFacade.deleteUser();
+        yield result.fold((l) => state.copyWith(),
+            (r) => state.copyWith(userFailureOrSuccess: none()));
+      },
+      getCurrentUser: (value) async* {
+        yield state.copyWith(isLoading: true);
+        final result = await iUserFacade.getUser();
+        yield result.fold(
+            (l) => state.copyWith(
+                user: null,
+                isLoading: false,
+                userFailureOrSuccess: some(left(l))),
+            (r) => state.copyWith(
+                user: r,
+                isLoading: false,
+                userFailureOrSuccess: some(right(unit))));
+      },
+    );
   }
 }

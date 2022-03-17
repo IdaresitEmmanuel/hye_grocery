@@ -7,4 +7,5 @@ class HDimensions {
   static double buttonTextMedium = 20.0;
   static double iconSize = 24.0;
   static double pageMargin = 30.0;
+  static double pageMarginSmall = 20.0;
 }

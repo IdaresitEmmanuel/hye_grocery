@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/theme/dimensions.dart';
 
 class EditUserField extends StatelessWidget {
-  const EditUserField(
-      {Key? key,
-      this.controller,
-      this.prefixIcon,
-      this.label,
-      this.keyboardType,
-      this.enable = true,
-      this.initialValue,
-      this.onChanged,
-      this.validator})
-      : super(key: key);
+  const EditUserField({
+    Key? key,
+    this.controller,
+    this.prefixIcon,
+    this.label,
+    this.keyboardType,
+    this.enable = true,
+    this.initialValue,
+    this.onChanged,
+    this.validator,
+  }) : super(key: key);
   final TextEditingController? controller;
   final IconData? prefixIcon;
   final String? label;
@@ -40,12 +41,13 @@ class EditUserField extends StatelessWidget {
               keyboardType: keyboardType,
               onChanged: onChanged,
               validator: validator,
+              cursorColor: HColors.accentColor,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: const EdgeInsets.symmetric(
                     horizontal: 10.0, vertical: 10.0),
                 border: const UnderlineInputBorder(),
-                label: Text(label ?? ""),
+                labelText: label ?? "",
                 hintText: label,
                 enabled: enable,
               ),

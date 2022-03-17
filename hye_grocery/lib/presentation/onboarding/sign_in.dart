@@ -212,7 +212,7 @@ class SignInForm extends StatelessWidget {
                               width: 24.0,
                               height: 24.0,
                             ),
-                            label: const Text("Facebook"),
+                            label: const Text("Facebook", style: TextStyle(color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               primary: const Color(0xFF43609C),
                             ),
@@ -228,7 +228,8 @@ class SignInForm extends StatelessWidget {
                               "assets/images/google_logo.png",
                               width: 20.0,
                             ),
-                            label: const Text("Google"),
+                            label: const Text("Google",
+                                style: TextStyle(color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               primary: const Color(0xFFDD4B39),
                             ),

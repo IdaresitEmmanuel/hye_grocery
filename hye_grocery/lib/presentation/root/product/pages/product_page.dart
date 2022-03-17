@@ -147,6 +147,7 @@ class _CategoryState extends State<Category> {
 
         // tempProducts;
         return GridView.builder(
+          cacheExtent: tempProducts.length.toDouble(),
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -159,9 +160,8 @@ class _CategoryState extends State<Category> {
           itemBuilder: (context, index) {
             final product = tempProducts[index];
             return ProductModel(
-                imageString: product.imageUrl,
-                name: product.name,
-                price: product.price);
+              product: product,
+            );
           },
         );
       },

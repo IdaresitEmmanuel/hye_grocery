@@ -19,6 +19,18 @@ class HThemeData {
       );
 
   static ThemeData get lightTheme => ThemeData(
+        primarySwatch: MaterialColor(0xFF64DD17, {
+          50: HColors.primaryColor.withOpacity(.1),
+          100: HColors.primaryColor.withOpacity(.2),
+          200: HColors.primaryColor.withOpacity(.3),
+          300: HColors.primaryColor.withOpacity(.4),
+          400: HColors.primaryColor.withOpacity(.5),
+          500: HColors.primaryColor.withOpacity(.6),
+          600: HColors.primaryColor.withOpacity(.7),
+          700: HColors.primaryColor.withOpacity(.8),
+          800: HColors.primaryColor.withOpacity(.9),
+          900: HColors.primaryColor.withOpacity(1),
+        }),
         primaryColor: HColors.primaryColor,
         cardColor: HColors.cardColor,
         iconTheme: IconThemeData(color: HColors.iconColor),

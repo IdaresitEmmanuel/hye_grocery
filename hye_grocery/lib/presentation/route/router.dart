@@ -3,6 +3,7 @@ import 'package:hye_grocery/presentation/core/splash_page.dart';
 import 'package:hye_grocery/presentation/onboarding/getting_started.dart';
 import 'package:hye_grocery/presentation/onboarding/sign_in.dart';
 import 'package:hye_grocery/presentation/onboarding/sign_up.dart';
+import 'package:hye_grocery/presentation/root/product/pages/product_detail_page.dart';
 import 'package:hye_grocery/presentation/root/root_page.dart';
 import 'package:hye_grocery/presentation/root/user/pages/edit_profile_page.dart';
 
@@ -18,6 +19,7 @@ import 'package:hye_grocery/presentation/root/user/pages/edit_profile_page.dart'
     //
     AutoRoute(page: RootPage),
     AutoRoute(page: EditProfilePage),
+    AutoRoute(page: ProductDetailPage),
   ],
 )
 class $AppRouter {}
