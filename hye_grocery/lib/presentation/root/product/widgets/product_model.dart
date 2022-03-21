@@ -71,7 +71,7 @@ class ProductModel extends StatelessWidget {
                       ),
                       child: Center(
                         child: Image.asset(
-                          "assets/images/cart_filled_white.png",
+                          "assets/icons/cart_filled_white.png",
                           fit: BoxFit.fitWidth,
                           width: HDimensions.iconSize,
                         ),

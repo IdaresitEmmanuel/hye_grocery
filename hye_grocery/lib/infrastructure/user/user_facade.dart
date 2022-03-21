@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hye_grocery/domain/auth/user.dart';
+import 'package:hye_grocery/domain/user/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/core/value_objects.dart';
 import 'package:hye_grocery/domain/user/i_user_facade.dart';

@@ -318,6 +318,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
                   child: RectButton(
                       text: "Save",
                       onTap: () {
+                        FocusScope.of(context).unfocus();
                         context
                             .read<ProfileBloc>()
                             .add(const ProfileEvent.updateUserProfile());

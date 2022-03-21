@@ -1,13 +1,19 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/product/product_bloc.dart';
 import 'package:hye_grocery/application/user/user_bloc.dart';
+import 'package:hye_grocery/domain/cart/cart.dart';
 import 'package:hye_grocery/domain/product/product.dart';
+import 'package:hye_grocery/infrastructure/core/helper_functions.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
+import 'package:hye_grocery/presentation/core/theme/dimensions.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/root/product/widgets/product_model.dart';
 import 'package:hye_grocery/presentation/root/product/widgets/search_widget.dart';
 import 'package:hye_grocery/presentation/root/product/widgets/tab_bar_circle_indicator.dart';
+import 'package:hye_grocery/presentation/route/router.gr.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 
 class ProductPage extends StatefulWidget {
@@ -36,36 +42,73 @@ class _ProductPageState extends State<ProductPage>
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 10.0),
+              margin: const EdgeInsets.symmetric(vertical: 16.0),
               child: BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
                   if (state.user == null) {
                     return const SizedBox.shrink();
                   }
-                  return ListTile(
-                    title: Text(
-                        "Hello ${state.user!.userName.value.getOrElse(() => "").split(' ').first}",
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .bodyLarge!
-                            .copyWith(
-                                color: HColors.iconColor,
-                                fontWeight: FontWeight.bold)),
-                    trailing: Container(
-                      width: 40.0,
-                      height: 40.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: state.user!.photoUrl == null ||
-                                      state.user!.photoUrl!.trim().isEmpty
-                                  ? Image.asset(
-                                          "assets/images/default_user_image.png")
-                                      .image
-                                  : Image.network(state.user!.photoUrl!)
-                                      .image)),
-                    ),
+                  return Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: HDimensions.pageMarginSmall),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              "Hello ${state.user!.userName.value.getOrElse(() => "").split(' ').first}",
+                              style: Theme.of(context)
+                                  .primaryTextTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                      color: HColors.iconColor,
+                                      fontWeight: FontWeight.bold)),
+                          // trailing: Container(
+                          //   width: 40.0,
+                          //   height: 40.0,
+                          //   decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(8.0),
+                          //       image: DecorationImage(
+                          //           fit: BoxFit.cover,
+                          //           image: state.user!.photoUrl == null ||
+                          //                   state.user!.photoUrl!.trim().isEmpty
+                          //               ? Image.asset(
+                          //                       "assets/images/default_user_image.png")
+                          //                   .image
+                          //               : Image.network(state.user!.photoUrl!)
+                          //                   .image)),
+                          // ),
+                          InkResponse(
+                            onTap: () => AutoRouter.of(context)
+                                .push(const ShoppingCart()),
+                            child: StreamBuilder<Cart>(
+                                stream: cart,
+                                builder: (context, snapshot) {
+                                  Cart? cart = snapshot.data;
+                                  if (cart != null) {
+                                    return Badge(
+                                      showBadge:
+                                          cart.noOfItems == 0 ? false : true,
+                                      animationType: BadgeAnimationType.scale,
+                                      badgeContent: Text(
+                                        "${cart.noOfItems}",
+                                        style: const TextStyle(
+                                            fontSize: 10.0,
+                                            color: Colors.white),
+                                      ),
+                                      child: Image.asset(
+                                        "assets/icons/cart_outlined.png",
+                                        width: HDimensions.iconSize,
+                                      ),
+                                    );
+                                  } else {
+                                    return Image.asset(
+                                      "assets/icons/cart_outlined.png",
+                                      width: HDimensions.iconSize,
+                                    );
+                                  }
+                                }),
+                          )
+                        ]),
                   );
                 },
               ),

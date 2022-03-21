@@ -24,7 +24,7 @@ class _SearchProductState extends State<SearchProduct> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/images/search.png",
+            "assets/icons/search.png",
             width: 24.0,
           ),
           const SizedBox(

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:hye_grocery/domain/auth/user.dart';
+import 'package:hye_grocery/domain/user/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/user/user_failure.dart';
 

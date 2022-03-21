@@ -14,4 +14,8 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
       PasswordMisMatch;
   const factory ValueFailure.invalidPhoneNumber({required String failedValue}) =
       InvalidPhoneNumber<T>;
+  const factory ValueFailure.invalidCardNumber({required String failureValue}) =
+      InvalidCardNumber<T>;
+  const factory ValueFailure.emptyCardName({required String failedValue}) =
+      EmptyCardName<T>;
 }

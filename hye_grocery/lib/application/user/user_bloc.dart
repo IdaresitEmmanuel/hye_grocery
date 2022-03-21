@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hye_grocery/domain/auth/user.dart';
+import 'package:hye_grocery/domain/user/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/user/i_user_facade.dart';
 import 'package:hye_grocery/domain/user/user_failure.dart';

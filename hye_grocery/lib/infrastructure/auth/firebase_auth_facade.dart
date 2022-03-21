@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hye_grocery/domain/auth/auth_failure.dart';
 import 'package:hye_grocery/domain/auth/i_auth_facade.dart';
-import 'package:hye_grocery/domain/auth/user.dart';
+import 'package:hye_grocery/domain/user/user.dart';
 import 'package:hye_grocery/domain/auth/value_field_objects.dart';
 import 'package:hye_grocery/domain/core/value_objects.dart';
 import 'package:injectable/injectable.dart';

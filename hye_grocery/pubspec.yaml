@@ -51,6 +51,9 @@ dependencies:
   preload_page_view: ^0.1.6
   file_picker: ^4.5.1
   firebase_storage: ^10.2.9
+  flutter_slidable: ^1.2.0
+  badges: ^2.0.2
+  mask_text_input_formatter: ^2.1.0
   
   
 
@@ -84,6 +87,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/icons/
     - assets/fonts/nunito/
 
   # An image asset can refer to one or more resolution-specific "variants", see

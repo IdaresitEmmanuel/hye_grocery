@@ -6,4 +6,5 @@ part 'user_failure.freezed.dart';
 abstract class UserFailure with _$UserFailure {
   const factory UserFailure.networkFailure() = NetworkFailure;
   const factory UserFailure.userDoesNotExist() = UserDoesNotExist;
+  const factory UserFailure.unauthenticatedFailure() = UnAuthenticatedFailure;
 }

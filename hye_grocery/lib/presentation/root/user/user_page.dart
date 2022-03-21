@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hye_grocery/application/user/user_bloc.dart';
-import 'package:hye_grocery/domain/auth/user.dart';
+import 'package:hye_grocery/domain/user/user.dart';
 import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/circle_image.dart';
 import 'package:hye_grocery/presentation/root/user/widgets/log_out_dialog.dart';
@@ -56,12 +56,12 @@ class _UserPageState extends State<UserPage> {
               onTap: () {}),
           ProfileListTile(
               icon: Icon(
-                Icons.edit_rounded,
+                Icons.attach_money,
                 color: HColors.iconColor,
-                size: 20,
+                size: 24,
               ),
-              title: "Edit Profile",
-              onTap: () {}),
+              title: "Payment method",
+              onTap: () => AutoRouter.of(context).push(const PaymentMethod())),
           ProfileListTile(
               icon: Icon(
                 Icons.edit_rounded,

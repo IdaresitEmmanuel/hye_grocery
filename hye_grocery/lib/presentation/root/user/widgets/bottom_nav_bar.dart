@@ -20,57 +20,79 @@ class BottomNavBar extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    "assets/images/home_outlined.png",
+                    "assets/icons/home_outlined.png",
                     width: HDimensions.iconSize,
                   ),
                   label: "home",
                   activeIcon: Image.asset(
-                    "assets/images/home_filled.png",
+                    "assets/icons/home_filled.png",
                     width: HDimensions.iconSize,
                   ),
                 ),
                 BottomNavigationBarItem(
                     icon: Image.asset(
-                      "assets/images/order_outlined.png",
+                      "assets/icons/order_outlined.png",
                       width: HDimensions.iconSize,
                       height: HDimensions.iconSize,
                     ),
                     activeIcon: Image.asset(
-                      "assets/images/order_filled.png",
+                      "assets/icons/order_filled.png",
                       width: HDimensions.iconSize,
                       height: HDimensions.iconSize,
                     ),
                     label: "order"),
+                // BottomNavigationBarItem(
+                //   icon: StreamBuilder<Cart>(
+                //       stream: cart,
+                //       builder: (context, snapshot) {
+                //         var cart = snapshot.data as Cart;
+                //         return Badge(
+                //           badgeContent: Text(
+                //             "${cart.noOfItems}",
+                //             style: const TextStyle(color: Colors.white),
+                //           ),
+                //           child: Image.asset(
+                //             "assets/images/cart_outlined.png",
+                //             width: HDimensions.iconSize,
+                //           ),
+                //         );
+                //       }),
+                //   label: "cart",
+                //   activeIcon: StreamBuilder<Cart>(
+                //       stream: cart,
+                //       builder: (context, snapshot) {
+                //         var cart = snapshot.data as Cart;
+                //         return Badge(
+                //           badgeContent: Text(
+                //             "${cart.noOfItems}",
+                //             style: const TextStyle(color: Colors.white),
+                //           ),
+                //           child: Image.asset(
+                //             "assets/images/cart_filled.png",
+                //             width: HDimensions.iconSize,
+                //           ),
+                //         );
+                //       }),
+                // ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    "assets/images/cart_outlined.png",
-                    width: HDimensions.iconSize,
-                  ),
-                  label: "cart",
-                  activeIcon: Image.asset(
-                    "assets/images/cart_filled.png",
-                    width: HDimensions.iconSize,
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    "assets/images/notification_outlined.png",
+                    "assets/icons/notification_outlined.png",
                     width: HDimensions.iconSize,
                   ),
                   label: "notification",
                   activeIcon: Image.asset(
-                    "assets/images/notification_filled.png",
+                    "assets/icons/notification_filled.png",
                     width: HDimensions.iconSize,
                   ),
                 ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    "assets/images/user_outlined.png",
+                    "assets/icons/user_outlined.png",
                     width: HDimensions.iconSize,
                   ),
                   label: "user",
                   activeIcon: Image.asset(
-                    "assets/images/user_filled.png",
+                    "assets/icons/user_filled.png",
                     width: HDimensions.iconSize,
                   ),
                 ),

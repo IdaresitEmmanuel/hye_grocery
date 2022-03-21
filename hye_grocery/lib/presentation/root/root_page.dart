@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hye_grocery/presentation/root/cart/pages/shopping_cart.dart';
 import 'package:hye_grocery/presentation/root/notification/pages/notification_page.dart';
 import 'package:hye_grocery/presentation/root/order/pages/order_page.dart';
 import 'package:hye_grocery/presentation/root/product/pages/product_page.dart';
@@ -18,7 +17,7 @@ class _RootPageState extends State<RootPage> {
   List<Widget> pages = const [
     ProductPage(),
     OrderPage(),
-    ShoppingCart(),
+    // ShoppingCart(),
     NotificationPage(),
     UserPage(),
   ];

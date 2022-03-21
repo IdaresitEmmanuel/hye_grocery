@@ -7,10 +7,12 @@ class RectButton extends StatelessWidget {
     required this.text,
     this.buttonColor,
     required this.onTap,
+    this.width,
   }) : super(key: key);
   final String text;
   final Color? buttonColor;
   final Function() onTap;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -19,7 +21,7 @@ class RectButton extends StatelessWidget {
           shadowColor: Colors.transparent,
           padding: const EdgeInsets.all(10.0),
           primary: buttonColor ?? HColors.primaryColor,
-          minimumSize: const Size(double.infinity, 40.0)),
+          minimumSize: Size(width ?? double.infinity, 40.0)),
       child: Text(text,
           textAlign: TextAlign.center,
           style: const TextStyle(

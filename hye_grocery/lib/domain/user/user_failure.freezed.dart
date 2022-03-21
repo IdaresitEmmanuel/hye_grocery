@@ -25,6 +25,10 @@ class _$UserFailureTearOff {
   UserDoesNotExist userDoesNotExist() {
     return const UserDoesNotExist();
   }
+
+  UnAuthenticatedFailure unauthenticatedFailure() {
+    return const UnAuthenticatedFailure();
+  }
 }
 
 /// @nodoc
@@ -36,18 +40,21 @@ mixin _$UserFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() networkFailure,
     required TResult Function() userDoesNotExist,
+    required TResult Function() unauthenticatedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,18 +62,22 @@ mixin _$UserFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(UserDoesNotExist value) userDoesNotExist,
+    required TResult Function(UnAuthenticatedFailure value)
+        unauthenticatedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +141,7 @@ class _$NetworkFailure implements NetworkFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() networkFailure,
     required TResult Function() userDoesNotExist,
+    required TResult Function() unauthenticatedFailure,
   }) {
     return networkFailure();
   }
@@ -139,6 +151,7 @@ class _$NetworkFailure implements NetworkFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
   }) {
     return networkFailure?.call();
   }
@@ -148,6 +161,7 @@ class _$NetworkFailure implements NetworkFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -161,6 +175,8 @@ class _$NetworkFailure implements NetworkFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(UserDoesNotExist value) userDoesNotExist,
+    required TResult Function(UnAuthenticatedFailure value)
+        unauthenticatedFailure,
   }) {
     return networkFailure(this);
   }
@@ -170,6 +186,7 @@ class _$NetworkFailure implements NetworkFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
   }) {
     return networkFailure?.call(this);
   }
@@ -179,6 +196,7 @@ class _$NetworkFailure implements NetworkFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -235,6 +253,7 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult when<TResult extends Object?>({
     required TResult Function() networkFailure,
     required TResult Function() userDoesNotExist,
+    required TResult Function() unauthenticatedFailure,
   }) {
     return userDoesNotExist();
   }
@@ -244,6 +263,7 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
   }) {
     return userDoesNotExist?.call();
   }
@@ -253,6 +273,7 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? networkFailure,
     TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
     required TResult orElse(),
   }) {
     if (userDoesNotExist != null) {
@@ -266,6 +287,8 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult map<TResult extends Object?>({
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(UserDoesNotExist value) userDoesNotExist,
+    required TResult Function(UnAuthenticatedFailure value)
+        unauthenticatedFailure,
   }) {
     return userDoesNotExist(this);
   }
@@ -275,6 +298,7 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
   }) {
     return userDoesNotExist?.call(this);
   }
@@ -284,6 +308,7 @@ class _$UserDoesNotExist implements UserDoesNotExist {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
     required TResult orElse(),
   }) {
     if (userDoesNotExist != null) {
@@ -295,4 +320,116 @@ class _$UserDoesNotExist implements UserDoesNotExist {
 
 abstract class UserDoesNotExist implements UserFailure {
   const factory UserDoesNotExist() = _$UserDoesNotExist;
+}
+
+/// @nodoc
+abstract class $UnAuthenticatedFailureCopyWith<$Res> {
+  factory $UnAuthenticatedFailureCopyWith(UnAuthenticatedFailure value,
+          $Res Function(UnAuthenticatedFailure) then) =
+      _$UnAuthenticatedFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UnAuthenticatedFailureCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res>
+    implements $UnAuthenticatedFailureCopyWith<$Res> {
+  _$UnAuthenticatedFailureCopyWithImpl(UnAuthenticatedFailure _value,
+      $Res Function(UnAuthenticatedFailure) _then)
+      : super(_value, (v) => _then(v as UnAuthenticatedFailure));
+
+  @override
+  UnAuthenticatedFailure get _value => super._value as UnAuthenticatedFailure;
+}
+
+/// @nodoc
+
+class _$UnAuthenticatedFailure implements UnAuthenticatedFailure {
+  const _$UnAuthenticatedFailure();
+
+  @override
+  String toString() {
+    return 'UserFailure.unauthenticatedFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UnAuthenticatedFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() networkFailure,
+    required TResult Function() userDoesNotExist,
+    required TResult Function() unauthenticatedFailure,
+  }) {
+    return unauthenticatedFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? networkFailure,
+    TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
+  }) {
+    return unauthenticatedFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? networkFailure,
+    TResult Function()? userDoesNotExist,
+    TResult Function()? unauthenticatedFailure,
+    required TResult orElse(),
+  }) {
+    if (unauthenticatedFailure != null) {
+      return unauthenticatedFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkFailure value) networkFailure,
+    required TResult Function(UserDoesNotExist value) userDoesNotExist,
+    required TResult Function(UnAuthenticatedFailure value)
+        unauthenticatedFailure,
+  }) {
+    return unauthenticatedFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
+  }) {
+    return unauthenticatedFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(UserDoesNotExist value)? userDoesNotExist,
+    TResult Function(UnAuthenticatedFailure value)? unauthenticatedFailure,
+    required TResult orElse(),
+  }) {
+    if (unauthenticatedFailure != null) {
+      return unauthenticatedFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnAuthenticatedFailure implements UserFailure {
+  const factory UnAuthenticatedFailure() = _$UnAuthenticatedFailure;
 }

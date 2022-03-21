@@ -47,6 +47,18 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+  InvalidCardNumber<T> invalidCardNumber<T>({required String failureValue}) {
+    return InvalidCardNumber<T>(
+      failureValue: failureValue,
+    );
+  }
+
+  EmptyCardName<T> emptyCardName<T>({required String failedValue}) {
+    return EmptyCardName<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -54,8 +66,6 @@ const $ValueFailure = _$ValueFailureTearOff();
 
 /// @nodoc
 mixin _$ValueFailure<T> {
-  String get failedValue => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String failedValue) emptyUserName,
@@ -63,6 +73,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +84,8 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +95,8 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +107,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +118,8 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,12 +129,10 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -123,7 +141,6 @@ abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
       _$ValueFailureCopyWithImpl<T, $Res>;
-  $Res call({String failedValue});
 }
 
 /// @nodoc
@@ -134,27 +151,13 @@ class _$ValueFailureCopyWithImpl<T, $Res>
   final ValueFailure<T> _value;
   // ignore: unused_field
   final $Res Function(ValueFailure<T>) _then;
-
-  @override
-  $Res call({
-    Object? failedValue = freezed,
-  }) {
-    return _then(_value.copyWith(
-      failedValue: failedValue == freezed
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $EmptyUserNameCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $EmptyUserNameCopyWith<T, $Res> {
   factory $EmptyUserNameCopyWith(
           EmptyUserName<T> value, $Res Function(EmptyUserName<T>) then) =
       _$EmptyUserNameCopyWithImpl<T, $Res>;
-  @override
   $Res call({String failedValue});
 }
 
@@ -221,6 +224,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) {
     return emptyUserName(failedValue);
   }
@@ -233,6 +238,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) {
     return emptyUserName?.call(failedValue);
   }
@@ -245,6 +252,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) {
     if (emptyUserName != null) {
@@ -261,6 +270,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) {
     return emptyUserName(this);
   }
@@ -273,6 +284,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) {
     return emptyUserName?.call(this);
   }
@@ -285,6 +298,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) {
     if (emptyUserName != null) {
@@ -298,21 +313,17 @@ abstract class EmptyUserName<T> implements ValueFailure<T> {
   const factory EmptyUserName({required String failedValue}) =
       _$EmptyUserName<T>;
 
-  @override
   String get failedValue;
-  @override
   @JsonKey(ignore: true)
   $EmptyUserNameCopyWith<T, EmptyUserName<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvalidEmailCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $InvalidEmailCopyWith<T, $Res> {
   factory $InvalidEmailCopyWith(
           InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
-  @override
   $Res call({String failedValue});
 }
 
@@ -379,6 +390,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) {
     return invalidEmail(failedValue);
   }
@@ -391,6 +404,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -403,6 +418,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -419,6 +436,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) {
     return invalidEmail(this);
   }
@@ -431,6 +450,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) {
     return invalidEmail?.call(this);
   }
@@ -443,6 +464,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -455,21 +478,17 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 abstract class InvalidEmail<T> implements ValueFailure<T> {
   const factory InvalidEmail({required String failedValue}) = _$InvalidEmail<T>;
 
-  @override
   String get failedValue;
-  @override
   @JsonKey(ignore: true)
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShortPasswordCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $ShortPasswordCopyWith<T, $Res> {
   factory $ShortPasswordCopyWith(
           ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
       _$ShortPasswordCopyWithImpl<T, $Res>;
-  @override
   $Res call({String failedValue});
 }
 
@@ -536,6 +555,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) {
     return shortPassword(failedValue);
   }
@@ -548,6 +569,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -560,6 +583,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -576,6 +601,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) {
     return shortPassword(this);
   }
@@ -588,6 +615,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) {
     return shortPassword?.call(this);
   }
@@ -600,6 +629,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -613,21 +644,17 @@ abstract class ShortPassword<T> implements ValueFailure<T> {
   const factory ShortPassword({required String failedValue}) =
       _$ShortPassword<T>;
 
-  @override
   String get failedValue;
-  @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PasswordMisMatchCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $PasswordMisMatchCopyWith<T, $Res> {
   factory $PasswordMisMatchCopyWith(
           PasswordMisMatch<T> value, $Res Function(PasswordMisMatch<T>) then) =
       _$PasswordMisMatchCopyWithImpl<T, $Res>;
-  @override
   $Res call({String failedValue});
 }
 
@@ -694,6 +721,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) {
     return passwordMisMatch(failedValue);
   }
@@ -706,6 +735,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) {
     return passwordMisMatch?.call(failedValue);
   }
@@ -718,6 +749,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) {
     if (passwordMisMatch != null) {
@@ -734,6 +767,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) {
     return passwordMisMatch(this);
   }
@@ -746,6 +781,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) {
     return passwordMisMatch?.call(this);
   }
@@ -758,6 +795,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) {
     if (passwordMisMatch != null) {
@@ -771,21 +810,17 @@ abstract class PasswordMisMatch<T> implements ValueFailure<T> {
   const factory PasswordMisMatch({required String failedValue}) =
       _$PasswordMisMatch<T>;
 
-  @override
   String get failedValue;
-  @override
   @JsonKey(ignore: true)
   $PasswordMisMatchCopyWith<T, PasswordMisMatch<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvalidPhoneNumberCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $InvalidPhoneNumberCopyWith<T, $Res> {
   factory $InvalidPhoneNumberCopyWith(InvalidPhoneNumber<T> value,
           $Res Function(InvalidPhoneNumber<T>) then) =
       _$InvalidPhoneNumberCopyWithImpl<T, $Res>;
-  @override
   $Res call({String failedValue});
 }
 
@@ -853,6 +888,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(String failedValue) shortPassword,
     required TResult Function(String failedValue) passwordMisMatch,
     required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
   }) {
     return invalidPhoneNumber(failedValue);
   }
@@ -865,6 +902,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
   }) {
     return invalidPhoneNumber?.call(failedValue);
   }
@@ -877,6 +916,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(String failedValue)? shortPassword,
     TResult Function(String failedValue)? passwordMisMatch,
     TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -893,6 +934,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
   }) {
     return invalidPhoneNumber(this);
   }
@@ -905,6 +948,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
   }) {
     return invalidPhoneNumber?.call(this);
   }
@@ -917,6 +962,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -930,10 +977,341 @@ abstract class InvalidPhoneNumber<T> implements ValueFailure<T> {
   const factory InvalidPhoneNumber({required String failedValue}) =
       _$InvalidPhoneNumber<T>;
 
-  @override
   String get failedValue;
-  @override
   @JsonKey(ignore: true)
   $InvalidPhoneNumberCopyWith<T, InvalidPhoneNumber<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidCardNumberCopyWith<T, $Res> {
+  factory $InvalidCardNumberCopyWith(InvalidCardNumber<T> value,
+          $Res Function(InvalidCardNumber<T>) then) =
+      _$InvalidCardNumberCopyWithImpl<T, $Res>;
+  $Res call({String failureValue});
+}
+
+/// @nodoc
+class _$InvalidCardNumberCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidCardNumberCopyWith<T, $Res> {
+  _$InvalidCardNumberCopyWithImpl(
+      InvalidCardNumber<T> _value, $Res Function(InvalidCardNumber<T>) _then)
+      : super(_value, (v) => _then(v as InvalidCardNumber<T>));
+
+  @override
+  InvalidCardNumber<T> get _value => super._value as InvalidCardNumber<T>;
+
+  @override
+  $Res call({
+    Object? failureValue = freezed,
+  }) {
+    return _then(InvalidCardNumber<T>(
+      failureValue: failureValue == freezed
+          ? _value.failureValue
+          : failureValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
+  const _$InvalidCardNumber({required this.failureValue});
+
+  @override
+  final String failureValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidCardNumber(failureValue: $failureValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvalidCardNumber<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failureValue, failureValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidCardNumberCopyWith<T, InvalidCardNumber<T>> get copyWith =>
+      _$InvalidCardNumberCopyWithImpl<T, InvalidCardNumber<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
+  }) {
+    return invalidCardNumber(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+  }) {
+    return invalidCardNumber?.call(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    required TResult orElse(),
+  }) {
+    if (invalidCardNumber != null) {
+      return invalidCardNumber(failureValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
+  }) {
+    return invalidCardNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+  }) {
+    return invalidCardNumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    required TResult orElse(),
+  }) {
+    if (invalidCardNumber != null) {
+      return invalidCardNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidCardNumber<T> implements ValueFailure<T> {
+  const factory InvalidCardNumber({required String failureValue}) =
+      _$InvalidCardNumber<T>;
+
+  String get failureValue;
+  @JsonKey(ignore: true)
+  $InvalidCardNumberCopyWith<T, InvalidCardNumber<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EmptyCardNameCopyWith<T, $Res> {
+  factory $EmptyCardNameCopyWith(
+          EmptyCardName<T> value, $Res Function(EmptyCardName<T>) then) =
+      _$EmptyCardNameCopyWithImpl<T, $Res>;
+  $Res call({String failedValue});
+}
+
+/// @nodoc
+class _$EmptyCardNameCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyCardNameCopyWith<T, $Res> {
+  _$EmptyCardNameCopyWithImpl(
+      EmptyCardName<T> _value, $Res Function(EmptyCardName<T>) _then)
+      : super(_value, (v) => _then(v as EmptyCardName<T>));
+
+  @override
+  EmptyCardName<T> get _value => super._value as EmptyCardName<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(EmptyCardName<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmptyCardName<T> implements EmptyCardName<T> {
+  const _$EmptyCardName({required this.failedValue});
+
+  @override
+  final String failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.emptyCardName(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EmptyCardName<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $EmptyCardNameCopyWith<T, EmptyCardName<T>> get copyWith =>
+      _$EmptyCardNameCopyWithImpl<T, EmptyCardName<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
+  }) {
+    return emptyCardName(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+  }) {
+    return emptyCardName?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    required TResult orElse(),
+  }) {
+    if (emptyCardName != null) {
+      return emptyCardName(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
+  }) {
+    return emptyCardName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+  }) {
+    return emptyCardName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    required TResult orElse(),
+  }) {
+    if (emptyCardName != null) {
+      return emptyCardName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyCardName<T> implements ValueFailure<T> {
+  const factory EmptyCardName({required String failedValue}) =
+      _$EmptyCardName<T>;
+
+  String get failedValue;
+  @JsonKey(ignore: true)
+  $EmptyCardNameCopyWith<T, EmptyCardName<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
