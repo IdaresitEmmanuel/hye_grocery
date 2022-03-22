@@ -7,15 +7,18 @@ abstract class CardState with _$CardState {
     required CardName editName,
     required CardNumber editCardNumber,
     required CardDate editCardDate,
-    required CardCVV editCardCvv,
+    required CVV editCardCvv,
     required Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess,
+    required String paymentMethod,
   }) = _CardState;
 
   factory CardState.initial() => CardState(
-      allCards: [],
-      editName: CardName(''),
-      editCardNumber: CardNumber(''),
-      editCardDate: CardDate(''),
-      editCardCvv: CardCVV(''),
-      addOrEditFailureOrSuccess: none());
+        allCards: [],
+        editName: CardName(''),
+        editCardNumber: CardNumber(''),
+        editCardDate: CardDate(''),
+        editCardCvv: CVV(''),
+        addOrEditFailureOrSuccess: none(),
+        paymentMethod: "",
+      );
 }

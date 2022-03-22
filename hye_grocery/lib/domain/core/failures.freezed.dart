@@ -59,6 +59,18 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+  InvalidCardDate<T> invalidCardDate<T>({required String failureValue}) {
+    return InvalidCardDate<T>(
+      failureValue: failureValue,
+    );
+  }
+
+  InvalidCVV<T> invalidCVV<T>({required String failureValue}) {
+    return InvalidCVV<T>(
+      failureValue: failureValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -75,6 +87,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +100,8 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +113,8 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +127,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -120,6 +140,8 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +153,8 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -226,6 +250,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return emptyUserName(failedValue);
   }
@@ -240,6 +266,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return emptyUserName?.call(failedValue);
   }
@@ -254,6 +282,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (emptyUserName != null) {
@@ -272,6 +302,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return emptyUserName(this);
   }
@@ -286,6 +318,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return emptyUserName?.call(this);
   }
@@ -300,6 +334,8 @@ class _$EmptyUserName<T> implements EmptyUserName<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (emptyUserName != null) {
@@ -392,6 +428,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return invalidEmail(failedValue);
   }
@@ -406,6 +444,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -420,6 +460,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -438,6 +480,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return invalidEmail(this);
   }
@@ -452,6 +496,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return invalidEmail?.call(this);
   }
@@ -466,6 +512,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -557,6 +605,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return shortPassword(failedValue);
   }
@@ -571,6 +621,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -585,6 +637,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -603,6 +657,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return shortPassword(this);
   }
@@ -617,6 +673,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return shortPassword?.call(this);
   }
@@ -631,6 +689,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -723,6 +783,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return passwordMisMatch(failedValue);
   }
@@ -737,6 +799,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return passwordMisMatch?.call(failedValue);
   }
@@ -751,6 +815,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (passwordMisMatch != null) {
@@ -769,6 +835,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return passwordMisMatch(this);
   }
@@ -783,6 +851,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return passwordMisMatch?.call(this);
   }
@@ -797,6 +867,8 @@ class _$PasswordMisMatch<T> implements PasswordMisMatch<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (passwordMisMatch != null) {
@@ -890,6 +962,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return invalidPhoneNumber(failedValue);
   }
@@ -904,6 +978,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return invalidPhoneNumber?.call(failedValue);
   }
@@ -918,6 +994,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -936,6 +1014,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return invalidPhoneNumber(this);
   }
@@ -950,6 +1030,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return invalidPhoneNumber?.call(this);
   }
@@ -964,6 +1046,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -1057,6 +1141,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return invalidCardNumber(failureValue);
   }
@@ -1071,6 +1157,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return invalidCardNumber?.call(failureValue);
   }
@@ -1085,6 +1173,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidCardNumber != null) {
@@ -1103,6 +1193,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return invalidCardNumber(this);
   }
@@ -1117,6 +1209,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return invalidCardNumber?.call(this);
   }
@@ -1131,6 +1225,8 @@ class _$InvalidCardNumber<T> implements InvalidCardNumber<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (invalidCardNumber != null) {
@@ -1223,6 +1319,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     required TResult Function(String failedValue) invalidPhoneNumber,
     required TResult Function(String failureValue) invalidCardNumber,
     required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
   }) {
     return emptyCardName(failedValue);
   }
@@ -1237,6 +1335,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
   }) {
     return emptyCardName?.call(failedValue);
   }
@@ -1251,6 +1351,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     TResult Function(String failedValue)? invalidPhoneNumber,
     TResult Function(String failureValue)? invalidCardNumber,
     TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
     required TResult orElse(),
   }) {
     if (emptyCardName != null) {
@@ -1269,6 +1371,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
     required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
     required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
   }) {
     return emptyCardName(this);
   }
@@ -1283,6 +1387,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
   }) {
     return emptyCardName?.call(this);
   }
@@ -1297,6 +1403,8 @@ class _$EmptyCardName<T> implements EmptyCardName<T> {
     TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
     TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
     TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
     required TResult orElse(),
   }) {
     if (emptyCardName != null) {
@@ -1313,5 +1421,360 @@ abstract class EmptyCardName<T> implements ValueFailure<T> {
   String get failedValue;
   @JsonKey(ignore: true)
   $EmptyCardNameCopyWith<T, EmptyCardName<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidCardDateCopyWith<T, $Res> {
+  factory $InvalidCardDateCopyWith(
+          InvalidCardDate<T> value, $Res Function(InvalidCardDate<T>) then) =
+      _$InvalidCardDateCopyWithImpl<T, $Res>;
+  $Res call({String failureValue});
+}
+
+/// @nodoc
+class _$InvalidCardDateCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidCardDateCopyWith<T, $Res> {
+  _$InvalidCardDateCopyWithImpl(
+      InvalidCardDate<T> _value, $Res Function(InvalidCardDate<T>) _then)
+      : super(_value, (v) => _then(v as InvalidCardDate<T>));
+
+  @override
+  InvalidCardDate<T> get _value => super._value as InvalidCardDate<T>;
+
+  @override
+  $Res call({
+    Object? failureValue = freezed,
+  }) {
+    return _then(InvalidCardDate<T>(
+      failureValue: failureValue == freezed
+          ? _value.failureValue
+          : failureValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidCardDate<T> implements InvalidCardDate<T> {
+  const _$InvalidCardDate({required this.failureValue});
+
+  @override
+  final String failureValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidCardDate(failureValue: $failureValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvalidCardDate<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failureValue, failureValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidCardDateCopyWith<T, InvalidCardDate<T>> get copyWith =>
+      _$InvalidCardDateCopyWithImpl<T, InvalidCardDate<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
+  }) {
+    return invalidCardDate(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
+  }) {
+    return invalidCardDate?.call(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
+    required TResult orElse(),
+  }) {
+    if (invalidCardDate != null) {
+      return invalidCardDate(failureValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
+  }) {
+    return invalidCardDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
+  }) {
+    return invalidCardDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
+    required TResult orElse(),
+  }) {
+    if (invalidCardDate != null) {
+      return invalidCardDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidCardDate<T> implements ValueFailure<T> {
+  const factory InvalidCardDate({required String failureValue}) =
+      _$InvalidCardDate<T>;
+
+  String get failureValue;
+  @JsonKey(ignore: true)
+  $InvalidCardDateCopyWith<T, InvalidCardDate<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidCVVCopyWith<T, $Res> {
+  factory $InvalidCVVCopyWith(
+          InvalidCVV<T> value, $Res Function(InvalidCVV<T>) then) =
+      _$InvalidCVVCopyWithImpl<T, $Res>;
+  $Res call({String failureValue});
+}
+
+/// @nodoc
+class _$InvalidCVVCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidCVVCopyWith<T, $Res> {
+  _$InvalidCVVCopyWithImpl(
+      InvalidCVV<T> _value, $Res Function(InvalidCVV<T>) _then)
+      : super(_value, (v) => _then(v as InvalidCVV<T>));
+
+  @override
+  InvalidCVV<T> get _value => super._value as InvalidCVV<T>;
+
+  @override
+  $Res call({
+    Object? failureValue = freezed,
+  }) {
+    return _then(InvalidCVV<T>(
+      failureValue: failureValue == freezed
+          ? _value.failureValue
+          : failureValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidCVV<T> implements InvalidCVV<T> {
+  const _$InvalidCVV({required this.failureValue});
+
+  @override
+  final String failureValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidCVV(failureValue: $failureValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvalidCVV<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failureValue, failureValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidCVVCopyWith<T, InvalidCVV<T>> get copyWith =>
+      _$InvalidCVVCopyWithImpl<T, InvalidCVV<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) emptyUserName,
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function(String failedValue) passwordMisMatch,
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failureValue) invalidCardNumber,
+    required TResult Function(String failedValue) emptyCardName,
+    required TResult Function(String failureValue) invalidCardDate,
+    required TResult Function(String failureValue) invalidCVV,
+  }) {
+    return invalidCVV(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
+  }) {
+    return invalidCVV?.call(failureValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? emptyUserName,
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function(String failedValue)? passwordMisMatch,
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failureValue)? invalidCardNumber,
+    TResult Function(String failedValue)? emptyCardName,
+    TResult Function(String failureValue)? invalidCardDate,
+    TResult Function(String failureValue)? invalidCVV,
+    required TResult orElse(),
+  }) {
+    if (invalidCVV != null) {
+      return invalidCVV(failureValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyUserName<T> value) emptyUserName,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(PasswordMisMatch<T> value) passwordMisMatch,
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCardNumber<T> value) invalidCardNumber,
+    required TResult Function(EmptyCardName<T> value) emptyCardName,
+    required TResult Function(InvalidCardDate<T> value) invalidCardDate,
+    required TResult Function(InvalidCVV<T> value) invalidCVV,
+  }) {
+    return invalidCVV(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
+  }) {
+    return invalidCVV?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyUserName<T> value)? emptyUserName,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordMisMatch<T> value)? passwordMisMatch,
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCardNumber<T> value)? invalidCardNumber,
+    TResult Function(EmptyCardName<T> value)? emptyCardName,
+    TResult Function(InvalidCardDate<T> value)? invalidCardDate,
+    TResult Function(InvalidCVV<T> value)? invalidCVV,
+    required TResult orElse(),
+  }) {
+    if (invalidCVV != null) {
+      return invalidCVV(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidCVV<T> implements ValueFailure<T> {
+  const factory InvalidCVV({required String failureValue}) = _$InvalidCVV<T>;
+
+  String get failureValue;
+  @JsonKey(ignore: true)
+  $InvalidCVVCopyWith<T, InvalidCVV<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

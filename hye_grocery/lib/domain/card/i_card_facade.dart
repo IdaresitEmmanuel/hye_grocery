@@ -10,7 +10,9 @@ abstract class ICardFacade {
       {required CardName name,
       required CardNumber cardNumber,
       required CardDate date,
-      required CardCVV cvv});
+      required CVV cvv});
   Future<Either<CardFailure, Unit>> removeCard(
       {required CardNumber cardNumber});
+  Future<Either<CardFailure, Unit>> setPaymentMethod({required String method});
+  Future<Either<CardFailure, String>> getPaymentMethod();
 }

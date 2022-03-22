@@ -64,18 +64,41 @@ Either<ValueFailure<String>, String> validateCardName(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validateCardDate(String input) {
+  if (input.length < 5) {
+    return left(ValueFailure.invalidCardDate(failureValue: input));
+  }
+  int currentYear = DateTime.now().year;
+  List<String> monthNYear = input.split("/");
+  int month = int.parse(monthNYear[0]);
+  int year = int.parse(monthNYear[1]) + 2000;
+  if (month > 12 || month < 1) {
+    return left(ValueFailure.invalidCardDate(failureValue: input));
+  } else if (year < currentYear) {
+    return left(ValueFailure.invalidCardDate(failureValue: input));
+  }
+  return right(input);
+}
+
+Either<ValueFailure<String>, String> validateCVV(String input) {
+  var regex = r"^[0-9]{3,4}$";
+  if (RegExp(regex).hasMatch(input)) {
+    return right(input);
+  }
+  return left(ValueFailure.invalidCVV(failureValue: input));
+}
+
 Either<ValueFailure<String>, String> validateCardNumber(String input) {
+  // luhn's algorithm
   if (input.isEmpty) {
-    return left(
-        const ValueFailure.invalidCardNumber(failureValue: "value is empty"));
+    return left(ValueFailure.invalidCardNumber(failureValue: input));
   }
 
   // input = getCleanedNumber();
 
   if (input.length < 16) {
     // no need to proceed with the validation if its less than sixteen
-    return left(
-        const ValueFailure.invalidCardNumber(failureValue: "value is empty"));
+    return left(ValueFailure.invalidCardNumber(failureValue: input));
   }
 
   int sum = 0;
@@ -95,6 +118,5 @@ Either<ValueFailure<String>, String> validateCardNumber(String input) {
     return right(input);
   }
 
-  return left(
-      const ValueFailure.invalidCardNumber(failureValue: "value is empty"));
+  return left(ValueFailure.invalidCardNumber(failureValue: input));
 }

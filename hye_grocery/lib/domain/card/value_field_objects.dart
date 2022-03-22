@@ -30,19 +30,19 @@ class CardDate extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory CardDate(String input) {
-    return CardDate._(value: validateCardName(input));
+    return CardDate._(value: validateCardDate(input));
   }
 
   const CardDate._({required this.value});
 }
 
-class CardCVV extends ValueObject<String> {
+class CVV extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory CardCVV(String input) {
-    return CardCVV._(value: validateCardName(input));
+  factory CVV(String input) {
+    return CVV._(value: validateCVV(input));
   }
 
-  const CardCVV._({required this.value});
+  const CVV._({required this.value});
 }

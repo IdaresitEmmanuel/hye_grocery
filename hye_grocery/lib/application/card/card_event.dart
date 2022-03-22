@@ -10,4 +10,7 @@ abstract class CardEvent with _$CardEvent {
   const factory CardEvent.setDate({required String value}) = SetDate;
   const factory CardEvent.setCVV({required String value}) = SetCVV;
   const factory CardEvent.addOrEdit() = AddOrEdit;
+  const factory CardEvent.getPaymentMethod() = GetPaymentMethod;
+  const factory CardEvent.setPaymentMethod({required String value}) =
+      SetPaymentMethod;
 }

@@ -27,9 +27,9 @@ class CardBloc extends Bloc<CardEvent, CardState> {
     }, setCardNumber: (event) async* {
       yield state.copyWith(editCardNumber: CardNumber(event.value));
     }, setDate: (event) async* {
-      yield state.copyWith(editCardDate: CardDate(''));
+      yield state.copyWith(editCardDate: CardDate(event.value));
     }, setCVV: (event) async* {
-      yield state.copyWith(editCardCvv: CardCVV(''));
+      yield state.copyWith(editCardCvv: CVV(event.value));
     }, addOrEdit: (event) async* {
       final result = await _iCardFacade.addOrEditCard(
           name: state.editName,
@@ -38,6 +38,13 @@ class CardBloc extends Bloc<CardEvent, CardState> {
           cvv: state.editCardCvv);
       yield state.copyWith(addOrEditFailureOrSuccess: some(result));
       yield state.copyWith(addOrEditFailureOrSuccess: none());
+    }, getPaymentMethod: (event) async* {
+      final result = await _iCardFacade.getPaymentMethod();
+      yield result.fold(
+          (l) => state.copyWith(), (r) => state.copyWith(paymentMethod: r));
+    }, setPaymentMethod: (event) async* {
+      await _iCardFacade.setPaymentMethod(method: event.value);
+      add(const CardEvent.getPaymentMethod());
     });
   }
 }

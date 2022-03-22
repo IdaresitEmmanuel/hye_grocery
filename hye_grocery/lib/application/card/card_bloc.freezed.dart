@@ -49,6 +49,16 @@ class _$CardEventTearOff {
   AddOrEdit addOrEdit() {
     return const AddOrEdit();
   }
+
+  GetPaymentMethod getPaymentMethod() {
+    return const GetPaymentMethod();
+  }
+
+  SetPaymentMethod setPaymentMethod({required String value}) {
+    return SetPaymentMethod(
+      value: value,
+    );
+  }
 }
 
 /// @nodoc
@@ -64,6 +74,8 @@ mixin _$CardEvent {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +86,8 @@ mixin _$CardEvent {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +98,8 @@ mixin _$CardEvent {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,6 +111,8 @@ mixin _$CardEvent {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +123,8 @@ mixin _$CardEvent {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -115,6 +135,8 @@ mixin _$CardEvent {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +201,8 @@ class _$GetCards implements GetCards {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return getCards();
   }
@@ -192,6 +216,8 @@ class _$GetCards implements GetCards {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return getCards?.call();
   }
@@ -205,6 +231,8 @@ class _$GetCards implements GetCards {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (getCards != null) {
@@ -222,6 +250,8 @@ class _$GetCards implements GetCards {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return getCards(this);
   }
@@ -235,6 +265,8 @@ class _$GetCards implements GetCards {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return getCards?.call(this);
   }
@@ -248,6 +280,8 @@ class _$GetCards implements GetCards {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (getCards != null) {
@@ -331,6 +365,8 @@ class _$SetHolderName implements SetHolderName {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return setHolderName(value);
   }
@@ -344,6 +380,8 @@ class _$SetHolderName implements SetHolderName {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return setHolderName?.call(value);
   }
@@ -357,6 +395,8 @@ class _$SetHolderName implements SetHolderName {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setHolderName != null) {
@@ -374,6 +414,8 @@ class _$SetHolderName implements SetHolderName {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return setHolderName(this);
   }
@@ -387,6 +429,8 @@ class _$SetHolderName implements SetHolderName {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return setHolderName?.call(this);
   }
@@ -400,6 +444,8 @@ class _$SetHolderName implements SetHolderName {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setHolderName != null) {
@@ -488,6 +534,8 @@ class _$SetCardNumber implements SetCardNumber {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return setCardNumber(value);
   }
@@ -501,6 +549,8 @@ class _$SetCardNumber implements SetCardNumber {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return setCardNumber?.call(value);
   }
@@ -514,6 +564,8 @@ class _$SetCardNumber implements SetCardNumber {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setCardNumber != null) {
@@ -531,6 +583,8 @@ class _$SetCardNumber implements SetCardNumber {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return setCardNumber(this);
   }
@@ -544,6 +598,8 @@ class _$SetCardNumber implements SetCardNumber {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return setCardNumber?.call(this);
   }
@@ -557,6 +613,8 @@ class _$SetCardNumber implements SetCardNumber {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setCardNumber != null) {
@@ -643,6 +701,8 @@ class _$SetDate implements SetDate {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return setDate(value);
   }
@@ -656,6 +716,8 @@ class _$SetDate implements SetDate {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return setDate?.call(value);
   }
@@ -669,6 +731,8 @@ class _$SetDate implements SetDate {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setDate != null) {
@@ -686,6 +750,8 @@ class _$SetDate implements SetDate {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return setDate(this);
   }
@@ -699,6 +765,8 @@ class _$SetDate implements SetDate {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return setDate?.call(this);
   }
@@ -712,6 +780,8 @@ class _$SetDate implements SetDate {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setDate != null) {
@@ -797,6 +867,8 @@ class _$SetCVV implements SetCVV {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return setCVV(value);
   }
@@ -810,6 +882,8 @@ class _$SetCVV implements SetCVV {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return setCVV?.call(value);
   }
@@ -823,6 +897,8 @@ class _$SetCVV implements SetCVV {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setCVV != null) {
@@ -840,6 +916,8 @@ class _$SetCVV implements SetCVV {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return setCVV(this);
   }
@@ -853,6 +931,8 @@ class _$SetCVV implements SetCVV {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return setCVV?.call(this);
   }
@@ -866,6 +946,8 @@ class _$SetCVV implements SetCVV {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (setCVV != null) {
@@ -927,6 +1009,8 @@ class _$AddOrEdit implements AddOrEdit {
     required TResult Function(String value) setDate,
     required TResult Function(String value) setCVV,
     required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
   }) {
     return addOrEdit();
   }
@@ -940,6 +1024,8 @@ class _$AddOrEdit implements AddOrEdit {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
   }) {
     return addOrEdit?.call();
   }
@@ -953,6 +1039,8 @@ class _$AddOrEdit implements AddOrEdit {
     TResult Function(String value)? setDate,
     TResult Function(String value)? setCVV,
     TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (addOrEdit != null) {
@@ -970,6 +1058,8 @@ class _$AddOrEdit implements AddOrEdit {
     required TResult Function(SetDate value) setDate,
     required TResult Function(SetCVV value) setCVV,
     required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
   }) {
     return addOrEdit(this);
   }
@@ -983,6 +1073,8 @@ class _$AddOrEdit implements AddOrEdit {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
   }) {
     return addOrEdit?.call(this);
   }
@@ -996,6 +1088,8 @@ class _$AddOrEdit implements AddOrEdit {
     TResult Function(SetDate value)? setDate,
     TResult Function(SetCVV value)? setCVV,
     TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
     required TResult orElse(),
   }) {
     if (addOrEdit != null) {
@@ -1010,6 +1104,315 @@ abstract class AddOrEdit implements CardEvent {
 }
 
 /// @nodoc
+abstract class $GetPaymentMethodCopyWith<$Res> {
+  factory $GetPaymentMethodCopyWith(
+          GetPaymentMethod value, $Res Function(GetPaymentMethod) then) =
+      _$GetPaymentMethodCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetPaymentMethodCopyWithImpl<$Res> extends _$CardEventCopyWithImpl<$Res>
+    implements $GetPaymentMethodCopyWith<$Res> {
+  _$GetPaymentMethodCopyWithImpl(
+      GetPaymentMethod _value, $Res Function(GetPaymentMethod) _then)
+      : super(_value, (v) => _then(v as GetPaymentMethod));
+
+  @override
+  GetPaymentMethod get _value => super._value as GetPaymentMethod;
+}
+
+/// @nodoc
+
+class _$GetPaymentMethod implements GetPaymentMethod {
+  const _$GetPaymentMethod();
+
+  @override
+  String toString() {
+    return 'CardEvent.getPaymentMethod()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetPaymentMethod);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCards,
+    required TResult Function(String value) setHolderName,
+    required TResult Function(String value) setCardNumber,
+    required TResult Function(String value) setDate,
+    required TResult Function(String value) setCVV,
+    required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
+  }) {
+    return getPaymentMethod();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getCards,
+    TResult Function(String value)? setHolderName,
+    TResult Function(String value)? setCardNumber,
+    TResult Function(String value)? setDate,
+    TResult Function(String value)? setCVV,
+    TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
+  }) {
+    return getPaymentMethod?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCards,
+    TResult Function(String value)? setHolderName,
+    TResult Function(String value)? setCardNumber,
+    TResult Function(String value)? setDate,
+    TResult Function(String value)? setCVV,
+    TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (getPaymentMethod != null) {
+      return getPaymentMethod();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCards value) getCards,
+    required TResult Function(SetHolderName value) setHolderName,
+    required TResult Function(SetCardNumber value) setCardNumber,
+    required TResult Function(SetDate value) setDate,
+    required TResult Function(SetCVV value) setCVV,
+    required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
+  }) {
+    return getPaymentMethod(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCards value)? getCards,
+    TResult Function(SetHolderName value)? setHolderName,
+    TResult Function(SetCardNumber value)? setCardNumber,
+    TResult Function(SetDate value)? setDate,
+    TResult Function(SetCVV value)? setCVV,
+    TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
+  }) {
+    return getPaymentMethod?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCards value)? getCards,
+    TResult Function(SetHolderName value)? setHolderName,
+    TResult Function(SetCardNumber value)? setCardNumber,
+    TResult Function(SetDate value)? setDate,
+    TResult Function(SetCVV value)? setCVV,
+    TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (getPaymentMethod != null) {
+      return getPaymentMethod(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetPaymentMethod implements CardEvent {
+  const factory GetPaymentMethod() = _$GetPaymentMethod;
+}
+
+/// @nodoc
+abstract class $SetPaymentMethodCopyWith<$Res> {
+  factory $SetPaymentMethodCopyWith(
+          SetPaymentMethod value, $Res Function(SetPaymentMethod) then) =
+      _$SetPaymentMethodCopyWithImpl<$Res>;
+  $Res call({String value});
+}
+
+/// @nodoc
+class _$SetPaymentMethodCopyWithImpl<$Res> extends _$CardEventCopyWithImpl<$Res>
+    implements $SetPaymentMethodCopyWith<$Res> {
+  _$SetPaymentMethodCopyWithImpl(
+      SetPaymentMethod _value, $Res Function(SetPaymentMethod) _then)
+      : super(_value, (v) => _then(v as SetPaymentMethod));
+
+  @override
+  SetPaymentMethod get _value => super._value as SetPaymentMethod;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(SetPaymentMethod(
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetPaymentMethod implements SetPaymentMethod {
+  const _$SetPaymentMethod({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'CardEvent.setPaymentMethod(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SetPaymentMethod &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  $SetPaymentMethodCopyWith<SetPaymentMethod> get copyWith =>
+      _$SetPaymentMethodCopyWithImpl<SetPaymentMethod>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCards,
+    required TResult Function(String value) setHolderName,
+    required TResult Function(String value) setCardNumber,
+    required TResult Function(String value) setDate,
+    required TResult Function(String value) setCVV,
+    required TResult Function() addOrEdit,
+    required TResult Function() getPaymentMethod,
+    required TResult Function(String value) setPaymentMethod,
+  }) {
+    return setPaymentMethod(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getCards,
+    TResult Function(String value)? setHolderName,
+    TResult Function(String value)? setCardNumber,
+    TResult Function(String value)? setDate,
+    TResult Function(String value)? setCVV,
+    TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
+  }) {
+    return setPaymentMethod?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCards,
+    TResult Function(String value)? setHolderName,
+    TResult Function(String value)? setCardNumber,
+    TResult Function(String value)? setDate,
+    TResult Function(String value)? setCVV,
+    TResult Function()? addOrEdit,
+    TResult Function()? getPaymentMethod,
+    TResult Function(String value)? setPaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (setPaymentMethod != null) {
+      return setPaymentMethod(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCards value) getCards,
+    required TResult Function(SetHolderName value) setHolderName,
+    required TResult Function(SetCardNumber value) setCardNumber,
+    required TResult Function(SetDate value) setDate,
+    required TResult Function(SetCVV value) setCVV,
+    required TResult Function(AddOrEdit value) addOrEdit,
+    required TResult Function(GetPaymentMethod value) getPaymentMethod,
+    required TResult Function(SetPaymentMethod value) setPaymentMethod,
+  }) {
+    return setPaymentMethod(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetCards value)? getCards,
+    TResult Function(SetHolderName value)? setHolderName,
+    TResult Function(SetCardNumber value)? setCardNumber,
+    TResult Function(SetDate value)? setDate,
+    TResult Function(SetCVV value)? setCVV,
+    TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
+  }) {
+    return setPaymentMethod?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCards value)? getCards,
+    TResult Function(SetHolderName value)? setHolderName,
+    TResult Function(SetCardNumber value)? setCardNumber,
+    TResult Function(SetDate value)? setDate,
+    TResult Function(SetCVV value)? setCVV,
+    TResult Function(AddOrEdit value)? addOrEdit,
+    TResult Function(GetPaymentMethod value)? getPaymentMethod,
+    TResult Function(SetPaymentMethod value)? setPaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (setPaymentMethod != null) {
+      return setPaymentMethod(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetPaymentMethod implements CardEvent {
+  const factory SetPaymentMethod({required String value}) = _$SetPaymentMethod;
+
+  String get value;
+  @JsonKey(ignore: true)
+  $SetPaymentMethodCopyWith<SetPaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$CardStateTearOff {
   const _$CardStateTearOff();
 
@@ -1018,8 +1421,9 @@ class _$CardStateTearOff {
       required CardName editName,
       required CardNumber editCardNumber,
       required CardDate editCardDate,
-      required CardCVV editCardCvv,
-      required Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess}) {
+      required CVV editCardCvv,
+      required Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess,
+      required String paymentMethod}) {
     return _CardState(
       allCards: allCards,
       editName: editName,
@@ -1027,6 +1431,7 @@ class _$CardStateTearOff {
       editCardDate: editCardDate,
       editCardCvv: editCardCvv,
       addOrEditFailureOrSuccess: addOrEditFailureOrSuccess,
+      paymentMethod: paymentMethod,
     );
   }
 }
@@ -1040,9 +1445,10 @@ mixin _$CardState {
   CardName get editName => throw _privateConstructorUsedError;
   CardNumber get editCardNumber => throw _privateConstructorUsedError;
   CardDate get editCardDate => throw _privateConstructorUsedError;
-  CardCVV get editCardCvv => throw _privateConstructorUsedError;
+  CVV get editCardCvv => throw _privateConstructorUsedError;
   Option<Either<CardFailure, Unit>> get addOrEditFailureOrSuccess =>
       throw _privateConstructorUsedError;
+  String get paymentMethod => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CardStateCopyWith<CardState> get copyWith =>
@@ -1058,8 +1464,9 @@ abstract class $CardStateCopyWith<$Res> {
       CardName editName,
       CardNumber editCardNumber,
       CardDate editCardDate,
-      CardCVV editCardCvv,
-      Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess});
+      CVV editCardCvv,
+      Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess,
+      String paymentMethod});
 }
 
 /// @nodoc
@@ -1078,6 +1485,7 @@ class _$CardStateCopyWithImpl<$Res> implements $CardStateCopyWith<$Res> {
     Object? editCardDate = freezed,
     Object? editCardCvv = freezed,
     Object? addOrEditFailureOrSuccess = freezed,
+    Object? paymentMethod = freezed,
   }) {
     return _then(_value.copyWith(
       allCards: allCards == freezed
@@ -1099,11 +1507,15 @@ class _$CardStateCopyWithImpl<$Res> implements $CardStateCopyWith<$Res> {
       editCardCvv: editCardCvv == freezed
           ? _value.editCardCvv
           : editCardCvv // ignore: cast_nullable_to_non_nullable
-              as CardCVV,
+              as CVV,
       addOrEditFailureOrSuccess: addOrEditFailureOrSuccess == freezed
           ? _value.addOrEditFailureOrSuccess
           : addOrEditFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<CardFailure, Unit>>,
+      paymentMethod: paymentMethod == freezed
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1119,8 +1531,9 @@ abstract class _$CardStateCopyWith<$Res> implements $CardStateCopyWith<$Res> {
       CardName editName,
       CardNumber editCardNumber,
       CardDate editCardDate,
-      CardCVV editCardCvv,
-      Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess});
+      CVV editCardCvv,
+      Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess,
+      String paymentMethod});
 }
 
 /// @nodoc
@@ -1140,6 +1553,7 @@ class __$CardStateCopyWithImpl<$Res> extends _$CardStateCopyWithImpl<$Res>
     Object? editCardDate = freezed,
     Object? editCardCvv = freezed,
     Object? addOrEditFailureOrSuccess = freezed,
+    Object? paymentMethod = freezed,
   }) {
     return _then(_CardState(
       allCards: allCards == freezed
@@ -1161,11 +1575,15 @@ class __$CardStateCopyWithImpl<$Res> extends _$CardStateCopyWithImpl<$Res>
       editCardCvv: editCardCvv == freezed
           ? _value.editCardCvv
           : editCardCvv // ignore: cast_nullable_to_non_nullable
-              as CardCVV,
+              as CVV,
       addOrEditFailureOrSuccess: addOrEditFailureOrSuccess == freezed
           ? _value.addOrEditFailureOrSuccess
           : addOrEditFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<CardFailure, Unit>>,
+      paymentMethod: paymentMethod == freezed
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1179,7 +1597,8 @@ class _$_CardState implements _CardState {
       required this.editCardNumber,
       required this.editCardDate,
       required this.editCardCvv,
-      required this.addOrEditFailureOrSuccess});
+      required this.addOrEditFailureOrSuccess,
+      required this.paymentMethod});
 
   @override
   final List<Card> allCards;
@@ -1190,13 +1609,15 @@ class _$_CardState implements _CardState {
   @override
   final CardDate editCardDate;
   @override
-  final CardCVV editCardCvv;
+  final CVV editCardCvv;
   @override
   final Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess;
+  @override
+  final String paymentMethod;
 
   @override
   String toString() {
-    return 'CardState(allCards: $allCards, editName: $editName, editCardNumber: $editCardNumber, editCardDate: $editCardDate, editCardCvv: $editCardCvv, addOrEditFailureOrSuccess: $addOrEditFailureOrSuccess)';
+    return 'CardState(allCards: $allCards, editName: $editName, editCardNumber: $editCardNumber, editCardDate: $editCardDate, editCardCvv: $editCardCvv, addOrEditFailureOrSuccess: $addOrEditFailureOrSuccess, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -1213,7 +1634,9 @@ class _$_CardState implements _CardState {
             const DeepCollectionEquality()
                 .equals(other.editCardCvv, editCardCvv) &&
             const DeepCollectionEquality().equals(
-                other.addOrEditFailureOrSuccess, addOrEditFailureOrSuccess));
+                other.addOrEditFailureOrSuccess, addOrEditFailureOrSuccess) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethod, paymentMethod));
   }
 
   @override
@@ -1224,7 +1647,8 @@ class _$_CardState implements _CardState {
       const DeepCollectionEquality().hash(editCardNumber),
       const DeepCollectionEquality().hash(editCardDate),
       const DeepCollectionEquality().hash(editCardCvv),
-      const DeepCollectionEquality().hash(addOrEditFailureOrSuccess));
+      const DeepCollectionEquality().hash(addOrEditFailureOrSuccess),
+      const DeepCollectionEquality().hash(paymentMethod));
 
   @JsonKey(ignore: true)
   @override
@@ -1238,9 +1662,9 @@ abstract class _CardState implements CardState {
       required CardName editName,
       required CardNumber editCardNumber,
       required CardDate editCardDate,
-      required CardCVV editCardCvv,
-      required Option<Either<CardFailure, Unit>>
-          addOrEditFailureOrSuccess}) = _$_CardState;
+      required CVV editCardCvv,
+      required Option<Either<CardFailure, Unit>> addOrEditFailureOrSuccess,
+      required String paymentMethod}) = _$_CardState;
 
   @override
   List<Card> get allCards;
@@ -1251,9 +1675,11 @@ abstract class _CardState implements CardState {
   @override
   CardDate get editCardDate;
   @override
-  CardCVV get editCardCvv;
+  CVV get editCardCvv;
   @override
   Option<Either<CardFailure, Unit>> get addOrEditFailureOrSuccess;
+  @override
+  String get paymentMethod;
   @override
   @JsonKey(ignore: true)
   _$CardStateCopyWith<_CardState> get copyWith =>

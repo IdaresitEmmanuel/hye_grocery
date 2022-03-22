@@ -20,7 +20,7 @@ class CardFacade extends ICardFacade {
       {required CardName name,
       required CardNumber cardNumber,
       required CardDate date,
-      required CardCVV cvv}) async {
+      required CVV cvv}) async {
     String cardNoStr = "";
     try {
       name.getOrCrash();
@@ -51,8 +51,9 @@ class CardFacade extends ICardFacade {
       final result = await user.cards.get();
       List<QueryDocumentSnapshot<Object?>> docs = result.docs;
       List<Card> cards = [];
+
       for (var doc in docs) {
-        var card = Card.fromMap(doc as Map<String, dynamic>);
+        var card = Card.fromMap(doc.data() as Map<String, dynamic>);
         cards.add(card);
       }
       log("all cards retrieved succesfully");
@@ -89,6 +90,36 @@ class CardFacade extends ICardFacade {
       return right(unit);
     } catch (e) {
       log("an error occured", error: e);
+      return left(const CardFailure.unexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Either<CardFailure, Unit>> setPaymentMethod(
+      {required String method}) async {
+    try {
+      final user = await _firestore.userDocument();
+      final doc = user.distinctCollection.doc('payment_method');
+      doc.set({"payment_method": method});
+      log("payment method has been set");
+      return right(unit);
+    } catch (e) {
+      log("an error occured", error: e);
+      return left(const CardFailure.unexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Either<CardFailure, String>> getPaymentMethod() async {
+    try {
+      final user = await _firestore.userDocument();
+      final doc = await user.distinctCollection.doc('payment_method').get();
+      String tempPaymentMethod =
+          (doc.data() as Map<String, dynamic>)['payment_method'];
+      log("payment method retrieved");
+      return right(tempPaymentMethod);
+    } catch (e) {
+      log("an error occured in getPaymentMethod", error: e);
       return left(const CardFailure.unexpectedFailure());
     }
   }

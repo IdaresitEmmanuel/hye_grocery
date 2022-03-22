@@ -16,4 +16,6 @@ extension FireStoreX on FirebaseFirestore {
 extension DocumentReferenceX on DocumentReference {
   CollectionReference get shoppingCart => collection('cart');
   CollectionReference get cards => collection('cards');
+  CollectionReference get distinctCollection =>
+      collection('distinct_collection');
 }

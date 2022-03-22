@@ -3,17 +3,21 @@ import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/theme/dimensions.dart';
 
 class PaymentCardTile extends StatelessWidget {
-  const PaymentCardTile(
-      {Key? key,
-      this.assetImage,
-      this.cardNo,
-      required this.groupValue,
-      required this.value})
-      : super(key: key);
+  const PaymentCardTile({
+    Key? key,
+    this.assetImage,
+    this.cardNo,
+    required this.groupValue,
+    required this.value,
+    this.showRadio = true,
+    this.onChanged,
+  }) : super(key: key);
   final String? assetImage;
   final String? cardNo;
-  final int groupValue;
-  final int value;
+  final String groupValue;
+  final String value;
+  final bool showRadio;
+  final void Function(String?)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,18 +32,22 @@ class PaymentCardTile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            assetImage ?? "",
-            width: 60.0,
-          ),
+          assetImage != null
+              ? Image.asset(
+                  assetImage ?? "",
+                  width: 60.0,
+                )
+              : const SizedBox.shrink(),
           Text(cardNo ?? "",
               style:
                   const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
-          Radio(
-              activeColor: HColors.iconColor,
-              value: value,
-              groupValue: groupValue,
-              onChanged: (value) {}),
+          showRadio
+              ? Radio(
+                  // activeColor: HColors.primaryColor,
+                  value: value,
+                  groupValue: groupValue,
+                  onChanged: onChanged)
+              : const SizedBox.shrink(),
         ],
       ),
     );

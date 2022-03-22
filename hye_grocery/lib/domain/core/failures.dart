@@ -18,4 +18,8 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
       InvalidCardNumber<T>;
   const factory ValueFailure.emptyCardName({required String failedValue}) =
       EmptyCardName<T>;
+  const factory ValueFailure.invalidCardDate({required String failureValue}) =
+      InvalidCardDate<T>;
+  const factory ValueFailure.invalidCVV({required String failureValue}) =
+      InvalidCVV<T>;
 }

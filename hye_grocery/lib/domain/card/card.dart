@@ -6,7 +6,7 @@ class Card {
   final CardName name;
   final CardNumber cardNumber;
   final CardDate cardDate;
-  final CardCVV cardCVV;
+  final CVV cardCVV;
   Card({
     required this.name,
     required this.cardNumber,
@@ -18,7 +18,7 @@ class Card {
     CardName? name,
     CardNumber? cardNumber,
     CardDate? cardDate,
-    CardCVV? cardCVV,
+    CVV? cardCVV,
   }) {
     return Card(
       name: name ?? this.name,
@@ -42,7 +42,7 @@ class Card {
       name: CardName(map['name']),
       cardNumber: CardNumber(map['cardNumber']),
       cardDate: CardDate(map['cardDate']),
-      cardCVV: CardCVV(map['cardCVV']),
+      cardCVV: CVV(map['cardCVV']),
     );
   }
 
