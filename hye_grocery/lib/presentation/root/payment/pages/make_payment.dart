@@ -63,7 +63,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               onTap: () => AutoRouter.of(context).push(const PaymentMethod()),
               child: const MakePaymentTile(
                   assetImage: "assets/images/visa.png",
-                  cardNo: "**** **** **** 3245",
+                  cardNo: "**** **** **** 1049",
                   groupValue: 4,
                   value: 5),
             ),

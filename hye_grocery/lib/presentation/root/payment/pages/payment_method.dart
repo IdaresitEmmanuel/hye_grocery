@@ -104,8 +104,11 @@ class _PaymentCardFormState extends State<PaymentCardForm> {
                     itemCount: cardState.allCards.length,
                     itemBuilder: (_, index) {
                       var card = cardState.allCards[index];
+
                       return PaymentCardTile(
-                        assetImage: "assets/images/mastercard.png",
+                        assetImage: card.cardNumber.toString().startsWith("5")
+                            ? "assets/images/mastercard.png"
+                            : "assets/images/visa.png",
                         cardNo: "**** **** **** " +
                             card.cardNumber.getOrCrash().substring(12),
                         groupValue: cardState.paymentMethod,

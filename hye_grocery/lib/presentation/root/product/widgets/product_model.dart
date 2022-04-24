@@ -49,16 +49,20 @@ class ProductModel extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(product.name,
-                          style: Theme.of(context).primaryTextTheme.bodyMedium),
-                      Text(
-                        "\$${product.price}",
-                        style: Theme.of(context).primaryTextTheme.bodyMedium,
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(product.name,
+                            style:
+                                Theme.of(context).primaryTextTheme.bodyMedium,
+                            overflow: TextOverflow.ellipsis),
+                        Text("\$${product.price}",
+                            style:
+                                Theme.of(context).primaryTextTheme.bodyMedium,
+                            overflow: TextOverflow.ellipsis),
+                      ],
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {},

@@ -137,7 +137,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 Container(
                     padding: EdgeInsets.symmetric(
                         horizontal: HDimensions.pageMarginSmall, vertical: 5.0),
-                    child: const ExpandableText()),
+                    child: ExpandableText(text: widget.product.description)),
                 SizedBox(
                   height: 260.0,
                   child: Column(
@@ -224,10 +224,13 @@ class DetailAppBar extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       child: Badge(
-                        showBadge: cart!.noOfItems == 0 ? false : true,
+                        showBadge: cart != null
+                            ? (cart.noOfItems == 0 ? false : true)
+                            : false,
                         toAnimate: false,
                         animationType: BadgeAnimationType.scale,
-                        badgeContent: Text("${cart.noOfItems}",
+                        badgeContent: Text(
+                            "${cart != null ? cart.noOfItems : 0}",
                             style: const TextStyle(
                                 fontSize: 10.0, color: Colors.white)),
                         child: Image.asset(

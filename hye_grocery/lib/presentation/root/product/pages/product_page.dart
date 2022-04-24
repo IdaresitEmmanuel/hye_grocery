@@ -42,7 +42,7 @@ class _ProductPageState extends State<ProductPage>
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 16.0),
+              margin: EdgeInsets.only(top: HDimensions.pageMargin, bottom: 10),
               child: BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
                   if (state.user == null) {
@@ -147,7 +147,7 @@ class _ProductPageState extends State<ProductPage>
                     Category(name: "vegetable"),
                     Category(name: "fruit"),
                     Category(name: "drink"),
-                    Center(child: Text("Dairy")),
+                    Category(name: "dairy"),
                     Center(child: Text("Food")),
                     Center(child: Text("Cakes")),
                   ]),

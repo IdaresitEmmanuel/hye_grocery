@@ -69,18 +69,23 @@ class _ShoppingCartState extends State<ShoppingCart> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Total \$${cart.totalPrice}",
-                                      style: TextStyle(
-                                          fontSize: HDimensions.bodyTextMedium),
-                                    ),
-                                    Text("No of items: ${cart.noOfItems}")
-                                  ],
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Total \$${cart.totalPrice.toStringAsFixed(2)}",
+                                        style: TextStyle(
+                                          fontSize: HDimensions.bodyTextMedium,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
+                                      Text("No of items: ${cart.noOfItems}")
+                                    ],
+                                  ),
                                 ),
-                                const Spacer(),
                                 // Expanded(
                                 // child:
                                 RectButton(

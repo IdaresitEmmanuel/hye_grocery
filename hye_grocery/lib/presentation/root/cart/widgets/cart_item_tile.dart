@@ -29,27 +29,34 @@ class CartItemTileState extends State<CartItemTile> {
           color: const Color.fromARGB(123, 243, 242, 242),
           borderRadius: BorderRadius.circular(6)),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          children: [
-            Container(
-              height: 50.0,
-              width: 50.0,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: Image.network(widget.cartItem.product.imageUrl)
-                          .image),
-                  borderRadius: BorderRadius.circular(6)),
-            ),
-            const SizedBox(width: 20.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.cartItem.product.name),
-                Text("\$${widget.cartItem.product.price}"),
-              ],
-            )
-          ],
+        Expanded(
+          child: Row(
+            children: [
+              Container(
+                height: 50.0,
+                width: 50.0,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: Image.network(widget.cartItem.product.imageUrl)
+                            .image),
+                    borderRadius: BorderRadius.circular(6)),
+              ),
+              const SizedBox(width: 20.0),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.cartItem.product.name,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text("\$${widget.cartItem.product.price}"),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
         Row(
           children: [
