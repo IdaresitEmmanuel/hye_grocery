@@ -9,6 +9,7 @@ import 'package:hye_grocery/presentation/core/theme/colors.dart';
 import 'package:hye_grocery/presentation/core/widgets/safe_fold.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/hform_field.dart';
 import 'package:hye_grocery/presentation/onboarding/widgets/round_button.dart';
+import 'package:hye_grocery/presentation/onboarding/widgets/signin_auth_dialog.dart';
 import 'package:hye_grocery/presentation/route/router.gr.dart';
 
 class SignIn extends StatefulWidget {
@@ -183,6 +184,10 @@ class SignInForm extends StatelessWidget {
                         child: RoundButton(
                             text: "Sign In",
                             onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) =>
+                                      const SignInAuthDialog());
                               context.read<SignInFormBloc>().add(
                                   const SignInFormEvent
                                       .signInWithEmailAndPasswordPressed());
@@ -212,7 +217,8 @@ class SignInForm extends StatelessWidget {
                               width: 24.0,
                               height: 24.0,
                             ),
-                            label: const Text("Facebook", style: TextStyle(color: Colors.white)),
+                            label: const Text("Facebook",
+                                style: TextStyle(color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               primary: const Color(0xFF43609C),
                             ),
