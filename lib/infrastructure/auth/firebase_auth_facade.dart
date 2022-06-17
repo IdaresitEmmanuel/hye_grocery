@@ -24,7 +24,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       return some(MyUser(
           id: UniqueId.fromUniqueString(_firebaseUser.uid),
           userName: UserName(_firebaseUser.displayName ?? "Unknown"),
-          emailAddress: EmailAddress(_firebaseUser.uid)));
+          emailAddress: EmailAddress(_firebaseUser.email ?? "Unknown")));
     }
     return none();
   }
