@@ -55,6 +55,7 @@ dependencies:
   badges: ^2.0.2
   mask_text_input_formatter: ^2.1.0
   mockito: ^5.2.0
+  bloc_test: ^8.5.0
   
   
 

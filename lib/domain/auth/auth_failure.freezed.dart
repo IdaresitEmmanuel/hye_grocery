@@ -145,7 +145,7 @@ class _$CancelledByUser
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthFailure.cancellByUser'));
+    properties.add(DiagnosticsProperty('type', 'AuthFailure.cancellByUser'));
   }
 
   @override
@@ -270,7 +270,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthFailure.serverError'));
+    properties.add(DiagnosticsProperty('type', 'AuthFailure.serverError'));
   }
 
   @override
@@ -399,7 +399,7 @@ class _$EmailAlreadyInUser
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthFailure.emailAlreadyInUser'));
+        .add(DiagnosticsProperty('type', 'AuthFailure.emailAlreadyInUser'));
   }
 
   @override
@@ -530,9 +530,8 @@ class _$InvalidEmailAndPasswordCombination
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AuthFailure.invalidEmailAndPasswordCombination'));
+    properties.add(DiagnosticsProperty(
+        'type', 'AuthFailure.invalidEmailAndPasswordCombination'));
   }
 
   @override

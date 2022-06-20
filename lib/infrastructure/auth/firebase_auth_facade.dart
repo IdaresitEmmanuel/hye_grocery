@@ -46,6 +46,24 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
+  Future<Either<AuthFailure, Unit>> signUpUser(
+      {required EmailAddress emailAddress, required Password password}) async {
+    final emailAddressStr = emailAddress.getOrCrash();
+    final passwordStr = password.getOrCrash();
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+          email: emailAddressStr, password: passwordStr);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "email-already-in-use") {
+        return left(const AuthFailure.emailAlreadyInUser());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    }
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> signInUser(
       {required EmailAddress emailAddress, required Password password}) async {
     final emailAddressStr = emailAddress.getOrCrash();
@@ -72,7 +90,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         return left(const AuthFailure.cancellByUser());
       }
       final googleAuthentication = await googleUser.authentication;
-      final authCredential = GoogleAuthProvider.credential(
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
           idToken: googleAuthentication.idToken,
           accessToken: googleAuthentication.accessToken);
 
@@ -81,24 +99,6 @@ class FirebaseAuthFacade implements IAuthFacade {
       return right(unit);
     } on PlatformException catch (_) {
       return left(const AuthFailure.serverError());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signUpUser(
-      {required EmailAddress emailAddress, required Password password}) async {
-    final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
-    try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: emailAddressStr, password: passwordStr);
-      return right(unit);
-    } on PlatformException catch (e) {
-      if (e.code == "email-already-in-use") {
-        return left(const AuthFailure.emailAlreadyInUser());
-      } else {
-        return left(const AuthFailure.serverError());
-      }
     }
   }
 }

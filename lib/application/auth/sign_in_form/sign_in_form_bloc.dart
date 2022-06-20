@@ -36,7 +36,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             password: Password(event.value), authFailureOrSuccess: none());
       },
       signInWithEmailAndPasswordPressed: (event) async* {
-        yield state.copyWith(showErrorMessages: true);
         yield state.copyWith(
           isSubmitting: true,
           showErrorMessages: true,
@@ -51,6 +50,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
 
         yield state.copyWith(
+          isSubmitting: false,
           authFailureOrSuccess: none(),
         );
       },
