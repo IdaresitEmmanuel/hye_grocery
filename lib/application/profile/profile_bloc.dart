@@ -19,17 +19,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    yield* event.map(updateUserProfile: (event) async* {
-      yield state.copyWith(
-          showEditErrorMessage: true,
-          isEditing: true,
-          editFailureOrSuccess: none());
-      final result = await iProfileFacade.updateUserProfile(
-          userName: state.editUsername, phoneNumber: state.editPhonenumber);
-      yield result.fold(
-          (l) => state.copyWith(editFailureOrSuccess: some(left(l))),
-          (r) => state.copyWith(editFailureOrSuccess: some(right(r))));
-      yield state.copyWith(isEditing: false, editFailureOrSuccess: none());
+    yield* event.map(resetState: (event) async* {
+      yield ProfileState.initial();
+    }, setEditUsername: (event) async* {
+      yield state.copyWith(editUsername: UserName(event.value));
+    }, setEditPhonenumber: (event) async* {
+      yield state.copyWith(editPhonenumber: PhoneNumber(event.value));
     }, updateProfileImage: (event) async* {
       yield state.copyWith(isImageLoading: true);
       final result = await iProfileFacade.updateProfileImage(
@@ -40,6 +35,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       );
       yield state.copyWith(
           isImageLoading: false, imageEditFailureOrSuccess: none());
+    }, updateUserProfile: (event) async* {
+      yield state.copyWith(
+          showEditErrorMessage: true,
+          isEditing: true,
+          editFailureOrSuccess: none());
+      final result = await iProfileFacade.updateUserProfile(
+          userName: state.editUsername, phoneNumber: state.editPhonenumber);
+      yield result.fold(
+          (l) => state.copyWith(editFailureOrSuccess: some(left(l))),
+          (r) => state.copyWith(editFailureOrSuccess: some(right(r))));
+      yield state.copyWith(isEditing: false, editFailureOrSuccess: none());
     }, deleteProfileImage: (event) async* {
       yield state.copyWith(isImageLoading: true);
       final result = await iProfileFacade.deleteProfileImage(
@@ -49,12 +55,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           (r) => state.copyWith(imageDeleteFailureOrSuccess: some(right(r))));
       yield state.copyWith(
           isImageLoading: false, imageDeleteFailureOrSuccess: none());
-    }, setEditUsername: (event) async* {
-      yield state.copyWith(editUsername: UserName(event.value));
-    }, setEditPhonenumber: (event) async* {
-      yield state.copyWith(editPhonenumber: PhoneNumber(event.value));
-    }, resetState: (event) async* {
-      yield ProfileState.initial();
     });
   }
 }
