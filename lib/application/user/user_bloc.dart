@@ -20,32 +20,39 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   @override
   Stream<UserState> mapEventToState(UserEvent event) async* {
     yield* event.map(
+      getCurrentUser: (value) async* {
+        yield state.copyWith(isLoading: true);
+        final result = await iUserFacade.getUser();
+        yield result.fold(
+          (l) => state.copyWith(
+              user: null,
+              isLoading: false,
+              userFailureOrSuccess: some(left(l))),
+          (r) => state.copyWith(
+            user: r,
+            isLoading: false,
+            userFailureOrSuccess: some(right(unit)),
+          ),
+        );
+      },
       createOrUpdateUser: (event) async* {
         final result = await iUserFacade.createOrUpdateUser(
             userName: event.username, phoneNumber: event.phoneNumber);
         yield result.fold(
-            (l) =>
-                state.copyWith(user: null, userFailureOrSuccess: some(left(l))),
-            (r) => state.copyWith(
-                user: r, userFailureOrSuccess: some(right(unit))));
+          (l) => state.copyWith(
+            user: null,
+            userFailureOrSuccess: some(left(l)),
+          ),
+          (r) => state.copyWith(
+            user: r,
+            userFailureOrSuccess: some(right(unit)),
+          ),
+        );
       },
       deleteUser: (event) async* {
         final result = await iUserFacade.deleteUser();
         yield result.fold((l) => state.copyWith(),
             (r) => state.copyWith(userFailureOrSuccess: none()));
-      },
-      getCurrentUser: (value) async* {
-        yield state.copyWith(isLoading: true);
-        final result = await iUserFacade.getUser();
-        yield result.fold(
-            (l) => state.copyWith(
-                user: null,
-                isLoading: false,
-                userFailureOrSuccess: some(left(l))),
-            (r) => state.copyWith(
-                user: r,
-                isLoading: false,
-                userFailureOrSuccess: some(right(unit))));
       },
     );
   }
